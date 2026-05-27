@@ -1,0 +1,69 @@
+export const metadata = { title: "Button" };
+
+# Button
+
+A versatile button with multiple variants, sizes, loading state, and full keyboard accessibility.
+
+## Usage
+
+```tsx
+import { Button } from "anexui";
+
+<Button variant="solid" size="md">Click me</Button>
+```
+
+## Variants
+
+```tsx
+<Button variant="solid">Solid</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+## Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## Loading state
+
+```tsx
+<Button isLoading>Saving…</Button>
+<Button isLoading loadingText="Uploading…">Upload</Button>
+```
+
+## Disabled
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+## As a link
+
+```tsx
+<Button as="a" href="/dashboard">Go to dashboard</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `"solid" \| "outline" \| "ghost" \| "link"` | `"solid"` | Visual style |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Button size |
+| `isLoading` | `boolean` | `false` | Shows spinner, sets `aria-busy` |
+| `loadingText` | `string` | — | Text shown while loading |
+| `disabled` | `boolean` | `false` | Disables the button, sets `aria-disabled` |
+| `type` | `"button" \| "submit" \| "reset"` | `"button"` | HTML button type |
+
+All standard HTML `<button>` attributes are also accepted.
+
+## Accessibility
+
+- Uses a native `<button>` element
+- `aria-busy="true"` is set automatically during loading
+- `aria-disabled="true"` is set when `disabled` — the button remains focusable for screen readers
+- `type="button"` by default to prevent accidental form submission

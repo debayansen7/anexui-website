@@ -1,0 +1,60 @@
+export const metadata = { title: "Badge" };
+
+# Badge
+
+A small status indicator — label mode or dot mode — with semantic colour variants.
+
+## Usage
+
+```tsx
+import { Badge } from "anexui";
+
+<Badge>Default</Badge>
+```
+
+## Variants
+
+```tsx
+<Badge variant="default">Default</Badge>
+<Badge variant="primary">Primary</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+<Badge variant="info">Info</Badge>
+```
+
+## Sizes
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+## Dot mode
+
+Renders a coloured circle with no text — for compact status indicators.
+
+```tsx
+<Badge variant="success" dot />
+<Badge variant="error" dot />
+<Badge variant="warning" dot />
+```
+
+## Combined with other elements
+
+```tsx
+<div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+  <span>Inbox</span>
+  <Badge variant="error" size="sm">12</Badge>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `"default" \| "primary" \| "success" \| "warning" \| "error" \| "info"` | `"default"` | Colour scheme |
+| `size` | `"sm" \| "md"` | `"md"` | Badge size |
+| `dot` | `boolean` | `false` | Renders a dot with no text |
+
+All standard HTML `<span>` attributes are accepted.

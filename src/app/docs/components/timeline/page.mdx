@@ -1,0 +1,70 @@
+export const metadata = { title: "Timeline" };
+
+# Timeline
+
+A vertical sequence of events with status dots, connector lines, and `aria-current="step"` on the active item.
+
+## Usage
+
+```tsx
+import { Timeline } from "anexui";
+
+const items = [
+  {
+    id: "created",
+    title: "Account created",
+    description: "Welcome to Anex UI.",
+    time: "Jan 1, 2025",
+    dateTime: "2025-01-01",
+    status: "completed",
+  },
+  {
+    id: "verified",
+    title: "Email verified",
+    time: "Jan 2, 2025",
+    dateTime: "2025-01-02",
+    status: "completed",
+  },
+  {
+    id: "onboarding",
+    title: "Onboarding",
+    description: "Set up your first project.",
+    time: "Jan 3, 2025",
+    dateTime: "2025-01-03",
+    status: "current",
+  },
+  {
+    id: "launch",
+    title: "Launch",
+    time: "Jan 10, 2025",
+    dateTime: "2025-01-10",
+    status: "upcoming",
+  },
+];
+
+<Timeline items={items} />
+```
+
+## Item shape
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | **Required.** Unique key |
+| `title` | `string` | **Required.** Event name |
+| `description` | `string` | Optional detail text |
+| `time` | `string` | Display timestamp label |
+| `dateTime` | `string` | Machine-readable ISO date for `<time>` |
+| `status` | `"completed" \| "current" \| "upcoming"` | Visual state of the dot |
+| `icon` | `ReactNode` | Custom icon inside the status dot |
+
+## Timeline Props
+
+| Prop | Type | Description |
+|---|---|---|
+| `items` | `TimelineItem[]` | **Required.** Ordered list of events |
+
+## Accessibility
+
+- Rendered as `<ol>` — implies ordered sequence to screen readers
+- Each item contains a `<time dateTime="…">` element for machine-readable dates
+- Current item has `aria-current="step"`

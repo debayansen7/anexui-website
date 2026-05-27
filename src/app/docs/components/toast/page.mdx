@@ -1,0 +1,86 @@
+export const metadata = { title: "Toast" };
+
+# Toast
+
+A notification system with a `ToastProvider` context and `useToast` hook. Supports auto-dismiss and manual close.
+
+## Setup
+
+Wrap your app root with `ToastProvider` once:
+
+```tsx
+import { ToastProvider } from "anexui";
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <ToastProvider>{children}</ToastProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Usage
+
+```tsx
+import { useToast } from "anexui";
+
+function Example() {
+  const { toast } = useToast();
+  return (
+    <Button onClick={() => toast("Changes saved!")}>
+      Save
+    </Button>
+  );
+}
+```
+
+## Toast types
+
+```tsx
+toast({ message: "Profile updated.", type: "success" });
+toast({ message: "Something went wrong.", type: "error" });
+toast({ message: "Low disk space.", type: "warning" });
+toast({ message: "New version available.", type: "info" });
+toast({ message: "Default notification." }); // type: "default"
+```
+
+## Custom duration
+
+```tsx
+toast({ message: "This stays for 8 seconds.", duration: 8000 });
+toast({ message: "This requires manual dismiss.", duration: 0 });
+```
+
+## Dismiss programmatically
+
+```tsx
+const { toast, dismiss } = useToast();
+
+const id = toast("Uploading…");
+// later…
+dismiss(id);
+```
+
+## useToast return value
+
+| Method | Signature | Description |
+|---|---|---|
+| `toast` | `(options: ToastItem \| string) => string` | Shows a toast, returns its id |
+| `dismiss` | `(id: string) => void` | Manually removes a toast |
+
+## Toast options
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `message` | `string` | — | **Required.** Toast text |
+| `type` | `"default" \| "success" \| "error" \| "warning" \| "info"` | `"default"` | Colour and icon |
+| `duration` | `number` | `4000` | Auto-dismiss delay in ms. Pass `0` to disable |
+
+## Accessibility
+
+- Toast container uses `aria-live="polite"` — new toasts are announced by screen readers without interrupting
+- Each toast has a close button with `aria-label="Dismiss"`
+- Error toasts can use `aria-live="assertive"` if the message is critical

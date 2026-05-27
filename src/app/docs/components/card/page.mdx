@@ -1,0 +1,66 @@
+export const metadata = { title: "Card" };
+
+# Card
+
+A compound surface component: `Card`, `CardHeader`, `CardBody`, `CardFooter`.
+
+## Usage
+
+```tsx
+import { Card, CardHeader, CardBody, CardFooter } from "anexui";
+
+<Card>
+  <CardHeader>
+    <h3>Card title</h3>
+  </CardHeader>
+  <CardBody>
+    <p>Card content goes here.</p>
+  </CardBody>
+  <CardFooter>
+    <Button variant="outline" size="sm">Cancel</Button>
+    <Button variant="solid" size="sm">Save</Button>
+  </CardFooter>
+</Card>
+```
+
+## Card without sections
+
+```tsx
+<Card style={{ padding: 24 }}>
+  <p>Simple card with direct padding.</p>
+</Card>
+```
+
+## Clickable card
+
+```tsx
+<Card
+  as="a"
+  href="/dashboard"
+  style={{ cursor: "pointer" }}
+  className="hover:border-violet-500 transition-colors"
+>
+  <CardBody>Click to navigate →</CardBody>
+</Card>
+```
+
+## With avatar and badge
+
+```tsx
+<Card>
+  <CardHeader>
+    <Stack direction="row" gap="3" align="center">
+      <Avatar src="/user.jpg" alt="Alice" size="sm" />
+      <div>
+        <p>Alice Johnson</p>
+        <Badge variant="success" size="sm">Active</Badge>
+      </div>
+    </Stack>
+  </CardHeader>
+  <CardBody>User joined 3 days ago.</CardBody>
+</Card>
+```
+
+## Props
+
+All `Card`, `CardHeader`, `CardBody`, and `CardFooter` accept standard HTML `<div>` attributes including `className`, `style`, and `onClick`.

@@ -1,0 +1,56 @@
+export const metadata = { title: "Banner" };
+
+# Banner
+
+A full-width site-level announcement bar with colour variants, an optional action, and a dismiss button.
+
+## Usage
+
+```tsx
+import { Banner } from "anexui";
+
+<Banner title="We updated our privacy policy." />
+```
+
+## Variants
+
+```tsx
+<Banner variant="info" title="Scheduled maintenance on Sunday." />
+<Banner variant="success" title="Your plan has been upgraded to Pro." />
+<Banner variant="warning" title="Your trial expires in 3 days." />
+<Banner variant="error" title="Service degradation detected." />
+<Banner variant="promo" title="50% off Pro — this weekend only." />
+```
+
+## With description and action
+
+```tsx
+<Banner
+  variant="warning"
+  title="Trial ending soon"
+  description="Upgrade now to keep access to all features."
+  action={{ label: "Upgrade", onClick: () => router.push("/billing") }}
+/>
+```
+
+## Dismissible
+
+```tsx
+<Banner
+  variant="info"
+  title="Welcome to Anex UI!"
+  onDismiss={() => setVisible(false)}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `"info" \| "success" \| "warning" \| "error" \| "promo"` | `"info"` | Colour scheme |
+| `title` | `string` | — | **Required.** Main banner text |
+| `description` | `string` | — | Secondary text below the title |
+| `action` | `{ label: string; onClick: () => void }` | — | Inline CTA button |
+| `onDismiss` | `() => void` | — | Shows a close button when provided |
+
+All standard HTML `<div>` attributes are accepted.

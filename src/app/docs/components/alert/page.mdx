@@ -1,0 +1,54 @@
+export const metadata = { title: "Alert" };
+
+# Alert
+
+An inline status message with icon, optional title, and dismiss button. Uses `role="alert"` or `role="status"` based on severity.
+
+## Usage
+
+```tsx
+import { Alert } from "anexui";
+
+<Alert variant="info">Your session expires in 5 minutes.</Alert>
+```
+
+## Variants
+
+```tsx
+<Alert variant="success">Profile updated successfully.</Alert>
+<Alert variant="error">Failed to save changes.</Alert>
+<Alert variant="warning">Unsaved changes will be lost.</Alert>
+<Alert variant="info">A new version is available.</Alert>
+```
+
+## With title
+
+```tsx
+<Alert variant="error" title="Payment failed">
+  Your card was declined. Please update your billing info.
+</Alert>
+```
+
+## Dismissible
+
+```tsx
+<Alert variant="warning" onDismiss={() => console.log("dismissed")}>
+  This action cannot be undone.
+</Alert>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `"success" \| "error" \| "warning" \| "info"` | `"info"` | Colour and icon |
+| `title` | `string` | — | Bold heading above the message |
+| `onDismiss` | `() => void` | — | Shows a close button, called on click |
+
+All standard HTML `<div>` attributes are accepted.
+
+## Accessibility
+
+- `role="alert"` on `error` variant — announces immediately
+- `role="status"` on all other variants — polite announcement
+- Dismiss button has `aria-label="Dismiss"` for screen readers

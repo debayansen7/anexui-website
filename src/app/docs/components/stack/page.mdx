@@ -1,0 +1,60 @@
+export const metadata = { title: "Stack" };
+
+# Stack
+
+A flexbox layout helper for arranging children in a row or column with consistent spacing.
+
+## Usage
+
+```tsx
+import { Stack } from "anexui";
+
+<Stack gap="4">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+```
+
+## Direction
+
+```tsx
+<Stack direction="row" gap="4">
+  <Button>Cancel</Button>
+  <Button variant="solid">Submit</Button>
+</Stack>
+
+<Stack direction="column" gap="3">
+  <Input placeholder="First name" />
+  <Input placeholder="Last name" />
+</Stack>
+```
+
+## Alignment
+
+```tsx
+<Stack direction="row" gap="4" align="center" justify="between">
+  <span>Left</span>
+  <span>Right</span>
+</Stack>
+```
+
+## Wrap
+
+```tsx
+<Stack direction="row" gap="3" wrap>
+  {tags.map(t => <Tag key={t}>{t}</Tag>)}
+</Stack>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `direction` | `"row" \| "column"` | `"column"` | Flex direction |
+| `gap` | `"0" \| "1" \| "2" \| "3" \| "4" \| "5" \| "6" \| "8" \| "10" \| "12" \| "16"` | `"0"` | Gap between children (maps to spacing tokens) |
+| `align` | `"start" \| "center" \| "end" \| "stretch" \| "baseline"` | `"stretch"` | `align-items` |
+| `justify` | `"start" \| "center" \| "end" \| "between" \| "around" \| "evenly"` | `"start"` | `justify-content` |
+| `wrap` | `boolean` | `false` | Allows children to wrap |
+
+All standard HTML `<div>` attributes are accepted.

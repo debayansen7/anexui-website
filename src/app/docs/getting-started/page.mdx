@@ -1,0 +1,104 @@
+export const metadata = { title: "Getting Started" };
+
+# Getting Started
+
+Anex UI is a React component library with 50+ accessible components built on React 19, Tailwind CSS v4, and CSS Modules.
+
+## Installation
+
+Install the package using your preferred package manager:
+
+```bash
+npm install anexui
+# or
+pnpm add anexui
+# or
+yarn add anexui
+```
+
+Anex UI requires React 19 as a peer dependency:
+
+```bash
+npm install react@^19 react-dom@^19
+```
+
+## Setup
+
+### 1. Import the stylesheet
+
+Add this import once at the root of your app — in `layout.tsx` (Next.js), `main.tsx` (Vite), or `_app.tsx` (Pages Router):
+
+```tsx
+import "anexui/styles";
+```
+
+This loads all design tokens (spacing, radius, typography, shadows) and both the light and dark color themes.
+
+### 2. Set a theme
+
+Anex UI reads the `data-theme` attribute on the `<html>` element:
+
+```html
+<!-- Light -->
+<html data-theme="light">
+
+<!-- Dark -->
+<html data-theme="dark">
+```
+
+Switch programmatically at any time:
+
+```ts
+document.documentElement.setAttribute("data-theme", "dark");
+```
+
+### 3. Wrap with ToastProvider (optional)
+
+If you use the `Toast` system, wrap your app root:
+
+```tsx
+import { ToastProvider } from "anexui";
+
+export default function App() {
+  return (
+    <ToastProvider>
+      {/* your app */}
+    </ToastProvider>
+  );
+}
+```
+
+## Your first component
+
+```tsx
+import { Button } from "anexui";
+
+export default function Page() {
+  return (
+    <Button variant="solid" size="md">
+      Hello Anex UI
+    </Button>
+  );
+}
+```
+
+## Next.js setup example
+
+A complete `layout.tsx` for Next.js App Router:
+
+```tsx
+import type { Metadata } from "next";
+import "anexui/styles";
+
+export const metadata: Metadata = {
+  title: "My App",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" data-theme="dark">
+      <body>{children}</body>
+    </html>
+  );
+}
+```

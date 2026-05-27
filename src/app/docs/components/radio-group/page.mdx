@@ -1,0 +1,83 @@
+export const metadata = { title: "Radio Group" };
+
+# Radio Group
+
+A group of radio buttons with roving tabindex keyboard navigation, rendered in a `<fieldset>`.
+
+## Usage
+
+```tsx
+import { RadioGroup, Radio } from "anexui";
+
+<RadioGroup legend="Preferred contact" name="contact">
+  <Radio label="Email" value="email" />
+  <Radio label="Phone" value="phone" />
+  <Radio label="SMS" value="sms" />
+</RadioGroup>
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { RadioGroup, Radio } from "anexui";
+
+function Example() {
+  const [value, setValue] = useState("email");
+  return (
+    <RadioGroup
+      legend="Preferred contact"
+      name="contact"
+      onChange={(e) => setValue(e.target.value)}
+    >
+      <Radio label="Email" value="email" defaultChecked={value === "email"} />
+      <Radio label="Phone" value="phone" defaultChecked={value === "phone"} />
+    </RadioGroup>
+  );
+}
+```
+
+## Horizontal layout
+
+```tsx
+<RadioGroup legend="Size" name="size" direction="horizontal">
+  <Radio label="Small" value="sm" />
+  <Radio label="Medium" value="md" defaultChecked />
+  <Radio label="Large" value="lg" />
+</RadioGroup>
+```
+
+## Disabled option
+
+```tsx
+<RadioGroup legend="Plan" name="plan">
+  <Radio label="Free" value="free" defaultChecked />
+  <Radio label="Pro" value="pro" />
+  <Radio label="Enterprise (coming soon)" value="enterprise" disabled />
+</RadioGroup>
+```
+
+## RadioGroup Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `legend` | `string` | — | **Required.** Group label rendered as `<legend>` |
+| `name` | `string` | — | **Required.** Shared `name` attribute linking radios |
+| `direction` | `"vertical" \| "horizontal"` | `"vertical"` | Layout direction |
+| `children` | `ReactNode` | — | `<Radio>` elements |
+
+## Radio Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | **Required.** Visible label next to the radio |
+| `value` | `string` | — | Value submitted with the form |
+| `disabled` | `boolean` | `false` | Disables this option |
+| `defaultChecked` | `boolean` | `false` | Initially checked (uncontrolled) |
+
+## Accessibility
+
+- Rendered as `<fieldset>` / `<legend>` — correct `role="radiogroup"` semantics
+- Arrow keys move focus between options (roving tabindex pattern)
+- `name` prop is required to link radios into a group
+- `legend` is required and announced by screen readers as the group label

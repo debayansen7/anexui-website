@@ -1,0 +1,65 @@
+export const metadata = { title: "Avatar" };
+
+# Avatar
+
+A user avatar with image support, initials fallback, status dot, and multiple sizes.
+
+## Usage
+
+```tsx
+import { Avatar } from "anexui";
+
+<Avatar src="/debayan.jpg" alt="Debayan Sen" />
+```
+
+## Initials fallback
+
+Shown when `src` is absent or the image fails to load.
+
+```tsx
+<Avatar initials="DS" />
+<Avatar src="/broken.jpg" alt="Jane Doe" initials="JD" />
+```
+
+## Sizes
+
+```tsx
+<Avatar initials="XS" size="xs" />
+<Avatar initials="SM" size="sm" />
+<Avatar initials="MD" size="md" />
+<Avatar initials="LG" size="lg" />
+<Avatar initials="XL" size="xl" />
+```
+
+## Status dot
+
+```tsx
+<Avatar initials="DS" status="online" />
+<Avatar initials="DS" status="away" />
+<Avatar initials="DS" status="busy" />
+<Avatar initials="DS" status="offline" />
+```
+
+## Group of avatars
+
+```tsx
+import { Stack, Avatar } from "anexui";
+
+<Stack direction="row" gap="2">
+  <Avatar src="/a.jpg" alt="Alice" size="sm" />
+  <Avatar src="/b.jpg" alt="Bob" size="sm" />
+  <Avatar initials="+3" size="sm" />
+</Stack>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `src` | `string` | — | Image source URL |
+| `alt` | `string` | — | Alt text for the image |
+| `initials` | `string` | — | Fallback text shown when no image |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` | Avatar diameter |
+| `status` | `"online" \| "offline" \| "away" \| "busy"` | — | Status indicator dot |
+
+All standard HTML `<span>` attributes are accepted (except `children`).

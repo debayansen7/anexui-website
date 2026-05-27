@@ -1,0 +1,63 @@
+export const metadata = { title: "Input" };
+
+# Input
+
+A text input field with error state support and full ARIA wiring.
+
+## Usage
+
+```tsx
+import { Input } from "anexui";
+
+<Input placeholder="Enter your email" />
+```
+
+## Error state
+
+```tsx
+<Input error placeholder="Invalid value" aria-describedby="err" />
+<p id="err">This field is required.</p>
+```
+
+## With label
+
+```tsx
+import { Label, Input } from "anexui";
+
+<Label htmlFor="name">Name</Label>
+<Input id="name" placeholder="Debayan Sen" />
+```
+
+## Input types
+
+```tsx
+<Input type="text" placeholder="Text" />
+<Input type="email" placeholder="you@example.com" />
+<Input type="password" placeholder="••••••••" />
+<Input type="number" placeholder="42" />
+<Input type="search" placeholder="Search…" />
+```
+
+## Disabled
+
+```tsx
+<Input disabled value="Read only value" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `error` | `boolean` | `false` | Sets `aria-invalid`, applies error border/ring |
+| `disabled` | `boolean` | `false` | Disables the input |
+| `placeholder` | `string` | — | Placeholder text |
+| `type` | `string` | `"text"` | HTML input type |
+
+All standard HTML `<input>` attributes are accepted.
+
+## Accessibility
+
+- Native `<input>` element — no ARIA role override needed
+- `aria-invalid="true"` applied automatically when `error` is set
+- Pair with `aria-describedby` pointing to an error message element
+- Always associate with a `<Label>` via `htmlFor` / `id`

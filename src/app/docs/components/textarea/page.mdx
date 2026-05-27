@@ -1,0 +1,53 @@
+export const metadata = { title: "Textarea" };
+
+# Textarea
+
+A multiline text input with resize control and error state.
+
+## Usage
+
+```tsx
+import { Textarea } from "anexui";
+
+<Textarea placeholder="Write something…" />
+```
+
+## Error state
+
+```tsx
+<Textarea error placeholder="Too short" aria-describedby="ta-err" />
+<p id="ta-err">Must be at least 20 characters.</p>
+```
+
+## Resize control
+
+```tsx
+<Textarea resize="none" placeholder="Fixed size" />
+<Textarea resize="vertical" placeholder="Vertically resizable (default)" />
+<Textarea resize="horizontal" placeholder="Horizontally resizable" />
+<Textarea resize="both" placeholder="Both axes" />
+```
+
+## Rows
+
+```tsx
+<Textarea rows={6} placeholder="Taller area" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `error` | `boolean` | `false` | Sets `aria-invalid`, applies error styling |
+| `resize` | `"none" \| "vertical" \| "horizontal" \| "both"` | `"vertical"` | CSS resize behaviour |
+| `rows` | `number` | — | Visible row count |
+| `disabled` | `boolean` | `false` | Disables the textarea |
+
+All standard HTML `<textarea>` attributes are accepted.
+
+## Accessibility
+
+- Native `<textarea>` element
+- `aria-invalid="true"` set automatically when `error` is true
+- Pair with `aria-describedby` pointing to an error message
+- Always associate with a `<Label>` via `htmlFor` / `id`

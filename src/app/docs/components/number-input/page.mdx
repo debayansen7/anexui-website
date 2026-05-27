@@ -1,0 +1,74 @@
+export const metadata = { title: "NumberInput" };
+
+# NumberInput
+
+A numeric input with increment/decrement buttons, min/max clamping, and hidden native spinners.
+
+## Usage
+
+```tsx
+import { NumberInput } from "anexui";
+
+<NumberInput defaultValue={1} />
+```
+
+## Min / max / step
+
+```tsx
+<NumberInput min={0} max={100} step={5} defaultValue={50} />
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { NumberInput } from "anexui";
+
+function Example() {
+  const [qty, setQty] = useState(1);
+  return (
+    <NumberInput
+      value={qty}
+      onChange={setQty}
+      min={1}
+      max={99}
+    />
+  );
+}
+```
+
+Note: `onChange` receives the parsed `number` directly — not a DOM event.
+
+## Disabled
+
+```tsx
+<NumberInput defaultValue={10} disabled />
+```
+
+## Inside FormField
+
+```tsx
+<FormField label="Quantity" helperText="Max 99 per order.">
+  <NumberInput min={1} max={99} defaultValue={1} />
+</FormField>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | — | Controlled value |
+| `defaultValue` | `number` | — | Uncontrolled initial value |
+| `onChange` | `(value: number) => void` | — | Receives the parsed numeric value |
+| `min` | `number` | — | Minimum allowed value |
+| `max` | `number` | — | Maximum allowed value |
+| `step` | `number` | `1` | Increment/decrement amount |
+| `disabled` | `boolean` | `false` | Disables input and buttons |
+
+The `type`, `value`, `defaultValue`, and `onChange` of the underlying `<input>` are managed internally. All other `<input>` attributes are accepted.
+
+## Accessibility
+
+- Increment button: `aria-label="Increase"`, decrement: `aria-label="Decrease"`
+- Buttons are `disabled` when the value is at its min/max boundary
+- Native number spinners hidden via CSS — custom buttons replace them consistently across browsers

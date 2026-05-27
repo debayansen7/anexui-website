@@ -1,0 +1,61 @@
+export const metadata = { title: "Accordion" };
+
+# Accordion
+
+A compound collapsible list using `hidden` attribute and `aria-expanded` / `aria-controls`.
+
+## Usage
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "anexui";
+
+<Accordion defaultOpen="q1">
+  <AccordionItem id="q1">
+    <AccordionTrigger>What is Anex UI?</AccordionTrigger>
+    <AccordionPanel>
+      Anex UI is a React component library with 50+ accessible components.
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem id="q2">
+    <AccordionTrigger>Does it support dark mode?</AccordionTrigger>
+    <AccordionPanel>
+      Yes — set <code>data-theme="dark"</code> on the html element.
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem id="q3">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionPanel>
+      Every component passes Storybook a11y checks in error mode.
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
+```
+
+## Multiple open
+
+```tsx
+<Accordion multiple defaultOpen={["q1", "q3"]}>
+  <AccordionItem id="q1">…</AccordionItem>
+  <AccordionItem id="q2">…</AccordionItem>
+  <AccordionItem id="q3">…</AccordionItem>
+</Accordion>
+```
+
+## Accordion Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `multiple` | `boolean` | `false` | Allow multiple items open simultaneously |
+| `defaultOpen` | `string \| string[]` | — | Item id(s) open by default |
+
+## AccordionItem Props
+
+| Prop | Type | Description |
+|---|---|---|
+| `id` | `string` | **Required.** Unique identifier linking trigger to panel |
+
+## Accessibility
+
+- `AccordionTrigger` renders as `<button>` with `aria-expanded` and `aria-controls`
+- `AccordionPanel` uses the `hidden` attribute — correct a11y without `display:none` hacks
+- Focus order follows DOM order — no roving tabindex needed
