@@ -15,10 +15,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <p className="text-white/70 leading-7 mb-4">{children}</p>
     ),
     code: ({ children }) => (
-      <code className="bg-white/10 text-emerald-400 px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>
+      <code
+        className="px-1.5 py-0.5 rounded text-sm font-mono"
+        style={{ color: "var(--code-color)", background: "var(--code-bg)" }}
+      >
+        {children}
+      </code>
     ),
     pre: ({ children }) => (
-      <pre className="bg-[#0d0d0d] border border-white/10 rounded-xl p-5 overflow-x-auto mb-6 text-sm font-mono text-white/80">{children}</pre>
+      <pre
+        className="rounded-xl p-5 overflow-x-auto mb-6 text-sm font-mono leading-relaxed"
+        style={{
+          background: "var(--pre-bg)",
+          border: "1px solid var(--pre-border)",
+          color: "var(--pre-text)",
+          boxShadow: "0 0 24px var(--pre-border)",
+        }}
+      >
+        {children}
+      </pre>
     ),
     ul: ({ children }) => (
       <ul className="list-disc list-inside text-white/70 mb-4 space-y-1.5">{children}</ul>
