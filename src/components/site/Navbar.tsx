@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
@@ -5,8 +6,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/8 bg-[#080808]/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 font-semibold text-white text-lg">
-          <span className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center text-sm font-bold">A</span>
+        <Link href="/" className="flex items-center gap-2 font-semibold text-white text-lg">
+          <Image src="/logo.png" alt="Anex UI" width={36} height={36} className="rounded-lg" priority />
           Anex UI
         </Link>
 
