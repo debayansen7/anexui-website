@@ -493,6 +493,7 @@ export const docNav = [
     items: [
       { label: "Installation", href: "/docs/getting-started" },
       { label: "Theming", href: "/docs/theming" },
+      { label: "Changelog", href: "/docs/changelog" },
     ],
   },
   ...categoryOrder.map((category) => ({

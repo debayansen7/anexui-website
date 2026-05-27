@@ -121,6 +121,7 @@ body {
 
 /* Text */
 [data-theme="light"] .text-white       { color: #09090b !important; }
+[data-theme="light"] .text-white\/80   { color: rgba(9, 9, 11, 0.80) !important; }
 [data-theme="light"] .text-white\/70   { color: rgba(9, 9, 11, 0.70) !important; }
 [data-theme="light"] .text-white\/60   { color: rgba(9, 9, 11, 0.60) !important; }
 [data-theme="light"] .text-white\/50   { color: rgba(9, 9, 11, 0.50) !important; }

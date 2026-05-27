@@ -1,0 +1,89 @@
+export const metadata = { title: "Changelog" };
+
+# Changelog
+
+All notable changes to Anex UI are documented here. Follows [Semantic Versioning](https://semver.org).
+
+---
+
+## v0.1.0
+
+**Released:** May 2026 · [npm](https://www.npmjs.com/package/anexui) · [GitHub](https://github.com/debayansen7/anex-ui-library)
+
+Initial public release of Anex UI — 35 components across 7 categories, all WCAG AA compliant, built with React 19 and Tailwind CSS v4.
+
+### New Components
+
+#### Basic / Form Primitives
+
+- **Button** — solid, outline, ghost, link variants · sm/md/lg sizes · loading spinner · `aria-busy`, `aria-disabled`
+- **Input** — text / email / password · `aria-invalid`, `aria-describedby`
+- **Textarea** — auto-resize, error state · `aria-invalid`, `aria-describedby`
+- **Checkbox** — indeterminate state · `fieldset`/`legend` group support
+- **Radio Group** — arrow-key navigation · `role="radiogroup"`
+- **Select** — native select with custom styling
+- **Switch** — `role="switch"`, `aria-checked`
+- **Slider** — `role="slider"`, `aria-valuenow` / `aria-valuemin` / `aria-valuemax`, arrow keys
+- **Label** — `htmlFor`, required `*` indicator
+
+#### Layout
+
+- **Container** — max-width wrapper · sm → 2xl breakpoints
+- **Stack** — flexbox helper · gap, align, justify, wrap
+- **Grid** — CSS grid helper · cols, rows, gap
+- **Divider** — `role="separator"` · horizontal and vertical · optional label
+
+#### Navigation
+
+- **Tabs** — `role="tablist"` · roving tabindex keyboard navigation · line and pill variants
+- **Breadcrumb** — `<nav aria-label="Breadcrumb">` · `aria-current="page"`
+- **Pagination** — smart ellipsis · `aria-current` · configurable siblings
+- **Stepper** — `aria-current="step"` · horizontal and vertical orientation
+
+#### Feedback / Status
+
+- **Alert** — `role="alert"` / `role="status"` · `aria-live`
+- **Badge** — dot and label mode · multiple color variants
+- **Progress** — `role="progressbar"` · determinate and indeterminate
+- **Spinner** — `role="status"` · animated SVG · visually hidden label
+- **Skeleton** — shimmer animation · text / circular / rectangular
+- **Toast** — `ToastProvider` + `useToast` hook · `aria-live="polite"` · auto-dismiss · manual close
+
+#### Overlay
+
+- **Modal** — native `<dialog>` + `showModal()` · focus trap · Escape to close · backdrop click dismiss
+- **Drawer** — same dialog pattern · right / left / bottom positions · sm / md / lg sizes
+- **Tooltip** — pure CSS `:hover` + `:focus-within` · `role="tooltip"` · `aria-describedby`
+- **Popover** — click-triggered · `aria-expanded`, `aria-haspopup`, `aria-controls`
+
+#### Data Display
+
+- **Avatar** — image with fallback initials · status dot (online / away / busy / offline)
+- **Card** — compound: `Card`, `CardHeader`, `CardBody`, `CardFooter`
+- **Table** — compound with `scope="col"` headers and caption support
+- **Accordion** — single and multi-expand · `aria-expanded` / `aria-controls`
+- **Tag** — optional dismiss with `aria-label="Remove [tag]"`
+- **Carousel** — W3C ARIA carousel pattern · arrows, dots, autoPlay, pause on hover
+- **Banner** — full-width site bar · info / success / warning / error / promo variants
+- **Timeline** — `<ol>` · status dots · `<time dateTime>` · `aria-current="step"`
+
+#### Form Composites
+
+- **FormField** — bundles Label + input + helper/error text · injects `id`, `aria-describedby`, `aria-invalid`, `aria-required`
+- **SearchInput** — `type="search"` · controlled/uncontrolled · clear button
+- **NumberInput** — `type="number"` · increment/decrement buttons · min/max clamping
+
+### Infrastructure
+
+- Dual ESM + CJS build via Vite library mode
+- TypeScript declarations with full prop types
+- Design token system via CSS custom properties (`data-theme="dark"` / `"light"`)
+- `clsx` + `tailwind-merge` utility (`cn`)
+- Storybook v10 with a11y addon set to `error` mode
+- GitHub Actions publish workflow
+
+### Website
+
+- Docs site at [anexui.com](https://anexui.com) — landing page, full component docs, Component Builder
+- Dark / light mode with FOUC-prevention
+- Component Builder — pick components, download a custom zip with source + tokens + README

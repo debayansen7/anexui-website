@@ -20,6 +20,9 @@
 # production
 /build
 
+# pagefind — generated search index, rebuilt on every deploy
+/public/pagefind
+
 # misc
 .DS_Store
 *.pem

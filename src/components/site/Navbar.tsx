@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import Search from "@/components/docs/Search";
 
 export default function Navbar() {
   return (
@@ -22,6 +23,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Search />
           <ThemeToggle />
           <a
             href="https://github.com/debayansen7/anex-ui-library"

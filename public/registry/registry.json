@@ -1,0 +1,385 @@
+{
+  "version": "0.1.0",
+  "components": [
+    {
+      "id": "button",
+      "label": "Button",
+      "description": "Solid, outline, ghost, and link variants with loading state.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Button",
+      "files": ["Button.tsx", "Button.module.css", "Button.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "input",
+      "label": "Input",
+      "description": "Text input with error, disabled, and helper text states.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Input",
+      "files": ["Input.tsx", "Input.module.css", "Input.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "textarea",
+      "label": "Textarea",
+      "description": "Multi-line input with optional auto-resize.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Textarea",
+      "files": ["Textarea.tsx", "Textarea.module.css", "Textarea.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "select",
+      "label": "Select",
+      "description": "Native select with accessible custom styling.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Select",
+      "files": ["Select.tsx", "Select.module.css", "Select.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "checkbox",
+      "label": "Checkbox",
+      "description": "Controlled checkbox with indeterminate state support.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Checkbox",
+      "files": ["Checkbox.tsx", "Checkbox.module.css", "Checkbox.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "radio-group",
+      "label": "Radio Group",
+      "description": "Context-linked radio group with arrow key navigation.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "RadioGroup",
+      "files": ["RadioGroup.tsx", "RadioGroup.module.css", "RadioGroup.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "switch",
+      "label": "Switch",
+      "description": "Toggle switch with aria-checked and disabled state.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Switch",
+      "files": ["Switch.tsx", "Switch.module.css", "Switch.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "slider",
+      "label": "Slider",
+      "description": "Range slider with min, max, step, and keyboard support.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Slider",
+      "files": ["Slider.tsx", "Slider.module.css", "Slider.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "label",
+      "label": "Label",
+      "description": "Accessible form label with optional required indicator.",
+      "category": "Basic",
+      "categorySlug": "basic",
+      "folderName": "Label",
+      "files": ["Label.tsx", "Label.module.css", "Label.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "container",
+      "label": "Container",
+      "description": "Centered content wrapper with responsive max-width presets.",
+      "category": "Layout",
+      "categorySlug": "layout",
+      "folderName": "Container",
+      "files": ["Container.tsx", "Container.module.css", "Container.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "stack",
+      "label": "Stack",
+      "description": "Flexbox stack with direction, gap, align, and justify props.",
+      "category": "Layout",
+      "categorySlug": "layout",
+      "folderName": "Stack",
+      "files": ["Stack.tsx", "Stack.module.css", "Stack.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "grid",
+      "label": "Grid",
+      "description": "CSS grid helper with column count and gap presets.",
+      "category": "Layout",
+      "categorySlug": "layout",
+      "folderName": "Grid",
+      "files": ["Grid.tsx", "Grid.module.css", "Grid.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "divider",
+      "label": "Divider",
+      "description": "Horizontal or vertical rule with an optional inline label.",
+      "category": "Layout",
+      "categorySlug": "layout",
+      "folderName": "Divider",
+      "files": ["Divider.tsx", "Divider.module.css", "Divider.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "tabs",
+      "label": "Tabs",
+      "description": "Tab list and panels with roving tabindex keyboard navigation.",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "folderName": "Tabs",
+      "files": ["Tabs.tsx", "Tabs.module.css", "Tabs.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "breadcrumb",
+      "label": "Breadcrumb",
+      "description": "Navigation trail with aria-current on the active page.",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "folderName": "Breadcrumb",
+      "files": ["Breadcrumb.tsx", "Breadcrumb.module.css", "Breadcrumb.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "pagination",
+      "label": "Pagination",
+      "description": "Smart page range with ellipsis and sibling configuration.",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "folderName": "Pagination",
+      "files": ["Pagination.tsx", "Pagination.module.css", "Pagination.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "stepper",
+      "label": "Stepper",
+      "description": "Progress stepper with horizontal and vertical orientation.",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "folderName": "Stepper",
+      "files": ["Stepper.tsx", "Stepper.module.css", "Stepper.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "alert",
+      "label": "Alert",
+      "description": "Status message with role=alert or role=status variants.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Alert",
+      "files": ["Alert.tsx", "Alert.module.css", "Alert.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "badge",
+      "label": "Badge",
+      "description": "Dot or label badge with multiple color variants.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Badge",
+      "files": ["Badge.tsx", "Badge.module.css", "Badge.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "progress",
+      "label": "Progress",
+      "description": "Progress bar with full ARIA progressbar pattern.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Progress",
+      "files": ["Progress.tsx", "Progress.module.css", "Progress.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "spinner",
+      "label": "Spinner",
+      "description": "Animated loading indicator with a screen-reader label.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Spinner",
+      "files": ["Spinner.tsx", "Spinner.module.css", "Spinner.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "skeleton",
+      "label": "Skeleton",
+      "description": "Shimmer placeholder in text, circular, or rectangular shapes.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Skeleton",
+      "files": ["Skeleton.tsx", "Skeleton.module.css", "Skeleton.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "toast",
+      "label": "Toast",
+      "description": "Imperative toast system with auto-dismiss and aria-live.",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "folderName": "Toast",
+      "files": ["Toast.tsx", "Toast.module.css", "Toast.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "modal",
+      "label": "Modal",
+      "description": "Native dialog with free focus trap and Escape to close.",
+      "category": "Overlay",
+      "categorySlug": "overlay",
+      "folderName": "Modal",
+      "files": ["Modal.tsx", "Modal.module.css", "Modal.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "drawer",
+      "label": "Drawer",
+      "description": "Side sheet from right, left, or bottom using native dialog.",
+      "category": "Overlay",
+      "categorySlug": "overlay",
+      "folderName": "Drawer",
+      "files": ["Drawer.tsx", "Drawer.module.css", "Drawer.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "tooltip",
+      "label": "Tooltip",
+      "description": "CSS hover tooltip with role=tooltip and aria-describedby.",
+      "category": "Overlay",
+      "categorySlug": "overlay",
+      "folderName": "Tooltip",
+      "files": ["Tooltip.tsx", "Tooltip.module.css", "Tooltip.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "popover",
+      "label": "Popover",
+      "description": "Click-triggered floating panel with aria-expanded on trigger.",
+      "category": "Overlay",
+      "categorySlug": "overlay",
+      "folderName": "Popover",
+      "files": ["Popover.tsx", "Popover.module.css", "Popover.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "avatar",
+      "label": "Avatar",
+      "description": "Image with fallback initials and an online status dot.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Avatar",
+      "files": ["Avatar.tsx", "Avatar.module.css", "Avatar.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "card",
+      "label": "Card",
+      "description": "Compound card with header, body, and footer sub-components.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Card",
+      "files": ["Card.tsx", "Card.module.css", "Card.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "table",
+      "label": "Table",
+      "description": "Accessible table with scope, caption, and compound structure.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Table",
+      "files": ["Table.tsx", "Table.module.css", "Table.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "accordion",
+      "label": "Accordion",
+      "description": "Expandable items with single or multi-expand mode.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Accordion",
+      "files": ["Accordion.tsx", "Accordion.module.css", "Accordion.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "tag",
+      "label": "Tag",
+      "description": "Inline chip with optional dismiss button and aria-label.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Tag",
+      "files": ["Tag.tsx", "Tag.module.css", "Tag.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "carousel",
+      "label": "Carousel",
+      "description": "Slide carousel with arrows, dots, autoPlay, and ARIA pattern.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Carousel",
+      "files": ["Carousel.tsx", "Carousel.module.css", "Carousel.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "banner",
+      "label": "Banner",
+      "description": "Full-width message bar for info, success, warning, or error.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Banner",
+      "files": ["Banner.tsx", "Banner.module.css", "Banner.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "description": "Vertical event list with status dots and time elements.",
+      "category": "Data Display",
+      "categorySlug": "data-display",
+      "folderName": "Timeline",
+      "files": ["Timeline.tsx", "Timeline.module.css", "Timeline.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "form-field",
+      "label": "FormField",
+      "description": "Label + input + error message bundle with full ARIA wiring.",
+      "category": "Form",
+      "categorySlug": "form",
+      "folderName": "FormField",
+      "files": ["FormField.tsx", "FormField.module.css", "FormField.Type.ts"],
+      "requires": ["label"]
+    },
+    {
+      "id": "search-input",
+      "label": "SearchInput",
+      "description": "Search input with clear button and accessible controls.",
+      "category": "Form",
+      "categorySlug": "form",
+      "folderName": "SearchInput",
+      "files": ["SearchInput.tsx", "SearchInput.module.css", "SearchInput.Type.ts"],
+      "requires": []
+    },
+    {
+      "id": "number-input",
+      "label": "NumberInput",
+      "description": "Number input with increment/decrement and min/max clamping.",
+      "category": "Form",
+      "categorySlug": "form",
+      "folderName": "NumberInput",
+      "files": ["NumberInput.tsx", "NumberInput.module.css", "NumberInput.Type.ts"],
+      "requires": []
+    }
+  ]
+}
