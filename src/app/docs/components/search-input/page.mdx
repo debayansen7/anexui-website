@@ -1,0 +1,64 @@
+export const metadata = { title: "SearchInput" };
+
+# SearchInput
+
+A `type="search"` input with a built-in search icon, clear button, and hidden native browser cancel.
+
+## Usage
+
+```tsx
+import { SearchInput } from "anexui";
+
+<SearchInput placeholder="Search components…" />
+```
+
+## Controlled with clear
+
+```tsx
+import { useState } from "react";
+import { SearchInput } from "anexui";
+
+function Example() {
+  const [query, setQuery] = useState("");
+  return (
+    <SearchInput
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      onClear={() => setQuery("")}
+      placeholder="Search…"
+    />
+  );
+}
+```
+
+## Disabled
+
+```tsx
+<SearchInput disabled placeholder="Search unavailable" />
+```
+
+## Inside FormField
+
+```tsx
+<FormField label="Search users">
+  <SearchInput placeholder="Name or email" />
+</FormField>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `onClear` | `() => void` | — | Called when the `×` button is clicked; button only shows when value is non-empty |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled initial value |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disables the input |
+
+The `type` prop is fixed to `"search"`. All other standard `<input>` attributes are accepted.
+
+## Accessibility
+
+- `type="search"` gives the input `role="searchbox"` implicitly
+- Clear button has `aria-label="Clear search"`
+- The native browser cancel button is hidden via CSS to avoid a duplicate control

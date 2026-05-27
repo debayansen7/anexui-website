@@ -1,0 +1,68 @@
+export const metadata = { title: "Stepper" };
+
+# Stepper
+
+A multi-step progress indicator — horizontal or vertical — with `aria-current="step"`.
+
+## Usage
+
+```tsx
+import { Stepper } from "anexui";
+
+const steps = [
+  { id: "account", label: "Account", description: "Create your account" },
+  { id: "profile", label: "Profile", description: "Set up your profile" },
+  { id: "billing", label: "Billing", description: "Add payment method" },
+  { id: "confirm", label: "Confirm", description: "Review and submit" },
+];
+
+<Stepper steps={steps} activeStep={1} />
+```
+
+## Vertical orientation
+
+```tsx
+<Stepper steps={steps} activeStep={2} orientation="vertical" />
+```
+
+## Controlled stepper
+
+```tsx
+import { useState } from "react";
+import { Stepper } from "anexui";
+
+function Example() {
+  const [active, setActive] = useState(0);
+  return (
+    <div>
+      <Stepper steps={steps} activeStep={active} />
+      <div style={{ marginTop: 16 }}>
+        <Button onClick={() => setActive(a => Math.max(0, a - 1))}>Back</Button>
+        <Button onClick={() => setActive(a => Math.min(steps.length - 1, a + 1))}>Next</Button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Step object
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | **Required.** Unique identifier |
+| `label` | `string` | **Required.** Step title |
+| `description` | `string` | Optional subtitle below the label |
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `steps` | `Step[]` | — | **Required.** Ordered list of steps |
+| `activeStep` | `number` | `0` | 0-based index of the current step |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout direction |
+
+## Accessibility
+
+- Current step has `aria-current="step"`
+- Completed steps are visually distinct (checkmark icon)
+- Inactive/upcoming steps are `aria-disabled` to signal non-interactivity

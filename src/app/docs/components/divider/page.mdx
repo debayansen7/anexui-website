@@ -1,0 +1,44 @@
+export const metadata = { title: "Divider" };
+
+# Divider
+
+A visual separator with optional centred label. Uses `role="separator"` for screen readers.
+
+## Usage
+
+```tsx
+import { Divider } from "anexui";
+
+<Divider />
+```
+
+## With label
+
+```tsx
+<Divider label="or" />
+<Divider label="Section title" />
+```
+
+## Vertical
+
+```tsx
+<div style={{ display: "flex", height: 40, alignItems: "stretch" }}>
+  <span>Left</span>
+  <Divider orientation="vertical" />
+  <span>Right</span>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Stack direction of surrounding content |
+| `label` | `string` | — | Optional text centred on the line |
+
+All standard HTML `<div>` attributes are accepted.
+
+## Accessibility
+
+- `role="separator"` applied automatically
+- `aria-orientation` matches the `orientation` prop

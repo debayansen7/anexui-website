@@ -1,0 +1,47 @@
+export const metadata = { title: "Tooltip" };
+
+# Tooltip
+
+A pure-CSS tooltip that appears on hover and focus. Uses `role="tooltip"` and `aria-describedby`.
+
+## Usage
+
+```tsx
+import { Tooltip } from "anexui";
+
+<Tooltip content="Save your changes">
+  <Button>Save</Button>
+</Tooltip>
+```
+
+## Sides
+
+```tsx
+<Tooltip content="Above" side="top"><Button>Top</Button></Tooltip>
+<Tooltip content="Below" side="bottom"><Button>Bottom</Button></Tooltip>
+<Tooltip content="Left side" side="left"><Button>Left</Button></Tooltip>
+<Tooltip content="Right side" side="right"><Button>Right</Button></Tooltip>
+```
+
+## Rich content
+
+```tsx
+<Tooltip content={<span>Keyboard shortcut: <kbd>⌘S</kbd></span>}>
+  <Button>Save</Button>
+</Tooltip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `content` | `ReactNode` | — | **Required.** Tooltip text or JSX |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` | Preferred placement |
+| `children` | `ReactNode` | — | **Required.** The trigger element |
+
+## Accessibility
+
+- Tooltip panel has `role="tooltip"`
+- Trigger element gets `aria-describedby` pointing to the tooltip panel
+- Tooltip appears on both `:hover` and `:focus-within` — keyboard accessible without JavaScript
+- Do not use tooltips as the sole label for an icon button — provide `aria-label` on the trigger too

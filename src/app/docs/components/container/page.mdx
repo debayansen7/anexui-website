@@ -1,0 +1,38 @@
+export const metadata = { title: "Container" };
+
+# Container
+
+A max-width wrapper that centres content with consistent responsive horizontal padding.
+
+## Usage
+
+```tsx
+import { Container } from "anexui";
+
+<Container>
+  <p>Centred content</p>
+</Container>
+```
+
+## Max-width sizes
+
+```tsx
+<Container maxWidth="sm">Small — 640px</Container>
+<Container maxWidth="md">Medium — 768px</Container>
+<Container maxWidth="lg">Large — 1024px</Container>
+<Container maxWidth="xl">XL — 1280px (default)</Container>
+<Container maxWidth="2xl">2XL — 1536px</Container>
+<Container maxWidth="full">Full — no max-width</Container>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `maxWidth` | `"sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "full"` | `"xl"` | Maximum width of the container |
+
+All standard HTML `<div>` attributes are accepted.
+
+## Accessibility
+
+Container is a layout-only wrapper with no ARIA semantics. Use semantic HTML (`<main>`, `<section>`, `<article>`) inside it.

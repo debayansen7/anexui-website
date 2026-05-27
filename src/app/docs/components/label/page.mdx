@@ -1,0 +1,45 @@
+export const metadata = { title: "Label" };
+
+# Label
+
+A styled `<label>` element with an optional required indicator.
+
+## Usage
+
+```tsx
+import { Label } from "anexui";
+
+<Label htmlFor="email">Email address</Label>
+<Input id="email" type="email" />
+```
+
+## Required indicator
+
+```tsx
+<Label htmlFor="name" required>Full name</Label>
+<Input id="name" required />
+```
+
+The `*` is rendered with `aria-hidden="true"` so screen readers don't announce it — the input's own `required` attribute handles that.
+
+## Disabled appearance
+
+```tsx
+<Label htmlFor="locked" className="opacity-50">Locked field</Label>
+<Input id="locked" disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `htmlFor` | `string` | — | ID of the associated form control |
+| `required` | `boolean` | `false` | Shows a visible `*` indicator (`aria-hidden`) |
+
+All standard HTML `<label>` attributes are accepted.
+
+## Accessibility
+
+- Native `<label>` element — clicking it focuses the associated control
+- `required` indicator is `aria-hidden` to avoid double-announcing; set `required` on the input too
+- Do not use `aria-label` as a substitute for a visible label — visible labels aid all users

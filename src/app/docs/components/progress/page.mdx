@@ -1,0 +1,58 @@
+export const metadata = { title: "Progress" };
+
+# Progress
+
+A progress bar with `role="progressbar"` and full ARIA value wiring.
+
+## Usage
+
+```tsx
+import { Progress } from "anexui";
+
+<Progress value={60} />
+```
+
+## With label and value display
+
+```tsx
+<Progress value={75} label="Upload progress" showValue />
+```
+
+## Variants
+
+```tsx
+<Progress value={80} variant="default" />
+<Progress value={80} variant="success" />
+<Progress value={40} variant="warning" />
+<Progress value={25} variant="error" />
+```
+
+## Custom max
+
+```tsx
+<Progress value={3} max={5} label="Step 3 of 5" showValue />
+```
+
+## Indeterminate (animated)
+
+```tsx
+<Progress value={0} label="Loading…" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | — | **Required.** Current progress value |
+| `max` | `number` | `100` | Maximum value |
+| `label` | `string` | — | Accessible label for screen readers |
+| `showValue` | `boolean` | `false` | Renders `value/max` text next to the bar |
+| `variant` | `"default" \| "success" \| "warning" \| "error"` | `"default"` | Colour scheme |
+
+All standard HTML `<div>` attributes are accepted (except `children`).
+
+## Accessibility
+
+- `role="progressbar"` applied automatically
+- `aria-valuenow`, `aria-valuemin`, `aria-valuemax` set from props
+- `aria-label` set from the `label` prop

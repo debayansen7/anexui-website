@@ -1,0 +1,79 @@
+export const metadata = { title: "Tabs" };
+
+# Tabs
+
+A tabbed interface with roving tabindex keyboard navigation and two visual variants.
+
+## Usage
+
+```tsx
+import { Tabs, TabList, Tab, TabPanel } from "anexui";
+
+<Tabs defaultActiveId="overview">
+  <TabList>
+    <Tab id="overview">Overview</Tab>
+    <Tab id="usage">Usage</Tab>
+    <Tab id="api">API</Tab>
+  </TabList>
+  <TabPanel id="overview">Overview content</TabPanel>
+  <TabPanel id="usage">Usage content</TabPanel>
+  <TabPanel id="api">API content</TabPanel>
+</Tabs>
+```
+
+## Variants
+
+```tsx
+<Tabs defaultActiveId="a" variant="line">…</Tabs>
+<Tabs defaultActiveId="a" variant="pill">…</Tabs>
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { Tabs, TabList, Tab, TabPanel } from "anexui";
+
+function Example() {
+  const [active, setActive] = useState("a");
+  return (
+    <Tabs activeId={active} onChange={setActive}>
+      <TabList>
+        <Tab id="a">Tab A</Tab>
+        <Tab id="b">Tab B</Tab>
+      </TabList>
+      <TabPanel id="a">Content A</TabPanel>
+      <TabPanel id="b">Content B</TabPanel>
+    </Tabs>
+  );
+}
+```
+
+## Disabled tab
+
+```tsx
+<Tab id="locked" disabled>Locked</Tab>
+```
+
+## Tabs Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `defaultActiveId` | `string` | — | Initially active tab id (uncontrolled) |
+| `activeId` | `string` | — | Active tab id (controlled) |
+| `onChange` | `(id: string) => void` | — | Called when the active tab changes |
+| `variant` | `"line" \| "pill"` | `"line"` | Visual style |
+
+## Tab Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `id` | `string` | — | **Required.** Must match the corresponding `TabPanel` id |
+| `disabled` | `boolean` | `false` | Disables this tab |
+
+## Accessibility
+
+- `role="tablist"`, `role="tab"`, `role="tabpanel"` applied automatically
+- Arrow keys navigate between tabs (roving tabindex)
+- `aria-selected`, `aria-controls`, `aria-labelledby` wired automatically
+- Disabled tabs are skipped by keyboard navigation

@@ -1,0 +1,68 @@
+export const metadata = { title: "Modal" };
+
+# Modal
+
+A dialog built on native `<dialog>` + `showModal()` with a focus trap, `Escape` to close, and backdrop-click dismiss.
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Modal, Button } from "anexui";
+
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open modal</Button>
+      <Modal isOpen={open} onClose={() => setOpen(false)} title="Confirm action">
+        <p>Are you sure you want to delete this item?</p>
+        <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+          <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+          <Button variant="solid" onClick={() => setOpen(false)}>Delete</Button>
+        </div>
+      </Modal>
+    </>
+  );
+}
+```
+
+## With description
+
+```tsx
+<Modal
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  title="Delete account"
+  description="This action is permanent and cannot be undone."
+>
+  <Button variant="solid" onClick={() => setOpen(false)}>Confirm</Button>
+</Modal>
+```
+
+## Sizes
+
+```tsx
+<Modal isOpen={open} onClose={close} title="Small modal" size="sm">…</Modal>
+<Modal isOpen={open} onClose={close} title="Default" size="md">…</Modal>
+<Modal isOpen={open} onClose={close} title="Large" size="lg">…</Modal>
+<Modal isOpen={open} onClose={close} title="Full screen" size="full">…</Modal>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isOpen` | `boolean` | — | **Required.** Controls visibility |
+| `onClose` | `() => void` | — | **Required.** Called on Escape or backdrop click |
+| `title` | `string` | — | Header text and dialog's accessible name (`aria-labelledby`) |
+| `description` | `string` | — | Subheading and `aria-describedby` |
+| `size` | `"sm" \| "md" \| "lg" \| "full"` | `"md"` | Dialog width |
+
+## Accessibility
+
+- Built on native `<dialog showModal()>` — browser handles scroll lock and inert background
+- Focus is trapped inside while open; returns to the trigger element on close
+- `Escape` key calls `onClose`
+- Backdrop click calls `onClose`
+- `aria-labelledby` and `aria-describedby` wired to `title` and `description` props

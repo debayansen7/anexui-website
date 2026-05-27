@@ -1,0 +1,68 @@
+export const metadata = { title: "Drawer" };
+
+# Drawer
+
+A side panel that slides in from any edge — built on the same native `<dialog>` pattern as Modal.
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Drawer, Button } from "anexui";
+
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open drawer</Button>
+      <Drawer isOpen={open} onClose={() => setOpen(false)} title="Settings">
+        <p>Drawer content here</p>
+      </Drawer>
+    </>
+  );
+}
+```
+
+## Sides
+
+```tsx
+<Drawer side="right" …>Right (default)</Drawer>
+<Drawer side="left" …>Left</Drawer>
+<Drawer side="bottom" …>Bottom sheet</Drawer>
+```
+
+## Sizes
+
+```tsx
+<Drawer size="sm" …>Narrow</Drawer>
+<Drawer size="md" …>Default</Drawer>
+<Drawer size="lg" …>Wide</Drawer>
+```
+
+## With description
+
+```tsx
+<Drawer
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  title="Edit profile"
+  description="Changes are saved automatically."
+>
+  <Input placeholder="Display name" />
+</Drawer>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isOpen` | `boolean` | — | **Required.** Controls visibility |
+| `onClose` | `() => void` | — | **Required.** Called on Escape or backdrop click |
+| `side` | `"right" \| "left" \| "bottom"` | `"right"` | Edge the drawer slides in from |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Drawer width (height for `bottom`) |
+| `title` | `string` | — | Header text and `aria-labelledby` |
+| `description` | `string` | — | Subheading and `aria-describedby` |
+
+## Accessibility
+
+Same as Modal — native `<dialog>`, focus trap, `Escape` to close, backdrop-click dismiss.

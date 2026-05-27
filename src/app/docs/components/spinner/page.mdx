@@ -1,0 +1,49 @@
+export const metadata = { title: "Spinner" };
+
+# Spinner
+
+An animated loading indicator with `role="status"` and a visually-hidden accessible label.
+
+## Usage
+
+```tsx
+import { Spinner } from "anexui";
+
+<Spinner />
+```
+
+## Sizes
+
+```tsx
+<Spinner size="sm" />
+<Spinner size="md" />
+<Spinner size="lg" />
+```
+
+## Custom label
+
+```tsx
+<Spinner label="Loading dashboard…" />
+```
+
+## Inside a button
+
+```tsx
+<Button disabled>
+  <Spinner size="sm" label="" />
+  Saving…
+</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size of the spinner SVG |
+| `label` | `string` | `"Loading…"` | Accessible label announced by screen readers (visually hidden) |
+
+## Accessibility
+
+- `role="status"` with `aria-live="polite"` announces the label on mount
+- Label text is visually hidden using a `.sr-only` utility — visible only to screen readers
+- Pass `label=""` when the surrounding context already announces loading (e.g., inside a loading button)

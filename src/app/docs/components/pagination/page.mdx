@@ -1,0 +1,43 @@
+export const metadata = { title: "Pagination" };
+
+# Pagination
+
+Page navigation with smart ellipsis, `aria-current`, and configurable sibling count.
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Pagination } from "anexui";
+
+function Example() {
+  const [page, setPage] = useState(1);
+  return <Pagination total={20} page={page} onChange={setPage} />;
+}
+```
+
+## Sibling count
+
+Controls how many pages appear on each side of the current page before an ellipsis is shown.
+
+```tsx
+<Pagination total={30} page={15} onChange={setPage} siblings={2} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `total` | `number` | — | **Required.** Total number of pages |
+| `page` | `number` | — | **Required.** Current active page (1-based) |
+| `onChange` | `(page: number) => void` | — | **Required.** Called on page change |
+| `siblings` | `number` | `1` | Pages shown on each side of the current page |
+
+All standard HTML `<nav>` attributes are accepted.
+
+## Accessibility
+
+- Wrapped in `<nav aria-label="Pagination">`
+- Active page button has `aria-current="page"`
+- Prev/next buttons have descriptive `aria-label` attributes
+- Ellipsis items are `aria-hidden`

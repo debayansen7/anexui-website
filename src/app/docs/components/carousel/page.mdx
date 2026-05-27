@@ -1,0 +1,63 @@
+export const metadata = { title: "Carousel" };
+
+# Carousel
+
+A slide carousel with arrows, dots, autoplay, loop, and full W3C ARIA carousel pattern.
+
+## Usage
+
+```tsx
+import { Carousel } from "anexui";
+
+<Carousel label="Featured projects">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+</Carousel>
+```
+
+## AutoPlay
+
+```tsx
+<Carousel autoPlay interval={3000} label="News carousel">
+  <img src="/slide1.jpg" alt="Slide 1" />
+  <img src="/slide2.jpg" alt="Slide 2" />
+  <img src="/slide3.jpg" alt="Slide 3" />
+</Carousel>
+```
+
+## Loop
+
+```tsx
+<Carousel loop label="Product images">
+  <Card>Product A</Card>
+  <Card>Product B</Card>
+  <Card>Product C</Card>
+</Carousel>
+```
+
+## Hide arrows or dots
+
+```tsx
+<Carousel showArrows={false} label="Testimonials">…</Carousel>
+<Carousel showDots={false} label="Gallery">…</Carousel>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | `"Carousel"` | `aria-label` for the carousel region |
+| `autoPlay` | `boolean` | `false` | Auto-advances slides |
+| `interval` | `number` | `4000` | Auto-advance interval in ms |
+| `loop` | `boolean` | `false` | Wraps from last back to first |
+| `showArrows` | `boolean` | `true` | Renders prev/next arrow buttons |
+| `showDots` | `boolean` | `true` | Renders dot navigation |
+
+## Accessibility
+
+- Carousel region has `aria-roledescription="carousel"` and `aria-label`
+- Each slide has `role="group"` and `aria-roledescription="slide"`
+- Autoplay pauses on hover and focus (`prefers-reduced-motion` also disables it)
+- Arrow buttons have descriptive `aria-label` attributes
+- Dot buttons indicate the current slide with `aria-current="true"`

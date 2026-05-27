@@ -1,0 +1,80 @@
+export const metadata = { title: "Theming" };
+
+# Theming
+
+Anex UI uses CSS custom properties for all design decisions. Switching themes is a single attribute change on `<html>`.
+
+## How it works
+
+Set `data-theme` on the root `<html>` element:
+
+```html
+<html data-theme="light">  <!-- or "dark" -->
+```
+
+All components read from CSS variables scoped to that attribute. No JavaScript theming library needed.
+
+## Switching at runtime
+
+```ts
+// Switch to dark
+document.documentElement.setAttribute("data-theme", "dark");
+
+// Switch to light
+document.documentElement.setAttribute("data-theme", "light");
+```
+
+## Color tokens
+
+| Token | Purpose |
+|---|---|
+| `--color-bg` | Page background |
+| `--color-surface` | Card / panel surface |
+| `--color-surface-raised` | Popovers, dropdowns |
+| `--color-border` | Default border |
+| `--color-border-focus` | Focus ring |
+| `--color-text` | Primary text |
+| `--color-text-subtle` | Muted / secondary text |
+| `--color-primary` | Brand / action color |
+| `--color-primary-subtle` | Tinted primary background |
+| `--color-success` | Success state |
+| `--color-error` | Error / destructive state |
+| `--color-warning` | Warning state |
+| `--color-info` | Informational state |
+
+## Spacing tokens
+
+| Token | Value |
+|---|---|
+| `--space-1` | 4px |
+| `--space-2` | 8px |
+| `--space-3` | 12px |
+| `--space-4` | 16px |
+| `--space-5` | 20px |
+| `--space-6` | 24px |
+| `--space-8` | 32px |
+| `--space-10` | 40px |
+
+## Typography tokens
+
+| Token | Value |
+|---|---|
+| `--text-xs` | 0.75rem |
+| `--text-sm` | 0.875rem |
+| `--text-base` | 1rem |
+| `--text-lg` | 1.125rem |
+| `--text-xl` | 1.25rem |
+| `--text-2xl` | 1.5rem |
+
+## Overriding tokens
+
+Override any token in your own CSS after the stylesheet import:
+
+```css
+@import "anexui/styles";
+
+[data-theme="dark"] {
+  --color-primary: #7c3aed;
+  --color-primary-subtle: rgba(124, 58, 237, 0.15);
+}
+```

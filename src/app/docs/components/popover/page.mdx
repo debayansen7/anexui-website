@@ -1,0 +1,76 @@
+export const metadata = { title: "Popover" };
+
+# Popover
+
+A click-triggered floating panel with `aria-expanded`, `aria-haspopup`, and `aria-controls` injected onto the trigger.
+
+## Usage
+
+```tsx
+import { Popover } from "anexui";
+
+<Popover content={<p>Popover content here.</p>}>
+  <Button>Open popover</Button>
+</Popover>
+```
+
+## Placement
+
+```tsx
+<Popover content={…} side="top" align="center"><Button>Top center</Button></Popover>
+<Popover content={…} side="bottom" align="start"><Button>Bottom left</Button></Popover>
+<Popover content={…} side="right" align="end"><Button>Right bottom</Button></Popover>
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { Popover } from "anexui";
+
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Popover
+      content={<p>Controlled popover.</p>}
+      open={open}
+      onOpenChange={setOpen}
+    >
+      <Button>Toggle</Button>
+    </Popover>
+  );
+}
+```
+
+## Rich content
+
+```tsx
+<Popover
+  content={
+    <div style={{ padding: 12 }}>
+      <p style={{ fontWeight: 600 }}>Filter options</p>
+      <Checkbox label="Show archived" />
+      <Checkbox label="Show drafts" />
+    </div>
+  }
+>
+  <Button variant="outline">Filters</Button>
+</Popover>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `content` | `ReactNode` | — | **Required.** Panel content |
+| `side` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Preferred side |
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Alignment along the side axis |
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Called when open state changes |
+| `children` | `ReactNode` | — | **Required.** Trigger element |
+
+## Accessibility
+
+- `aria-expanded`, `aria-haspopup="dialog"`, `aria-controls` injected onto the trigger via `cloneElement`
+- Click outside or `Escape` closes the popover
+- Focus moves into the panel on open; returns to trigger on close

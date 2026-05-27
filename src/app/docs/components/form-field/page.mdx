@@ -1,0 +1,80 @@
+export const metadata = { title: "FormField" };
+
+# FormField
+
+A wrapper that bundles a `Label`, any input, helper text, and error text. Automatically injects `id`, `aria-describedby`, `aria-invalid`, and `aria-required` into the child control via `cloneElement`.
+
+## Usage
+
+```tsx
+import { FormField, Input } from "anexui";
+
+<FormField label="Email address">
+  <Input type="email" placeholder="you@example.com" />
+</FormField>
+```
+
+## Required field
+
+```tsx
+<FormField label="Full name" required>
+  <Input placeholder="Debayan Sen" />
+</FormField>
+```
+
+## Helper text
+
+```tsx
+<FormField label="Username" helperText="Only letters, numbers, and underscores.">
+  <Input placeholder="debayan_7" />
+</FormField>
+```
+
+## Error state
+
+```tsx
+<FormField
+  label="Password"
+  error
+  errorText="Must be at least 8 characters."
+>
+  <Input type="password" />
+</FormField>
+```
+
+## With Textarea
+
+```tsx
+<FormField label="Bio" helperText="Max 160 characters.">
+  <Textarea rows={3} />
+</FormField>
+```
+
+## With Select
+
+```tsx
+<FormField label="Country" required>
+  <Select placeholder="Choose a country">
+    <option value="us">United States</option>
+    <option value="in">India</option>
+    <option value="uk">United Kingdom</option>
+  </Select>
+</FormField>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label text shown above the input |
+| `required` | `boolean` | `false` | Adds `*` indicator and sets `aria-required` on the child |
+| `helperText` | `string` | — | Muted hint text below the input |
+| `errorText` | `string` | — | Error message below the input |
+| `error` | `boolean` | `false` | Activates error styling and `aria-invalid` on the child |
+| `children` | `ReactNode` | — | **Required.** Single form control |
+
+## Accessibility
+
+- Generates a unique `id` and passes it to the child via `cloneElement`
+- `aria-describedby` points to the helper/error text element automatically
+- `aria-invalid` and `aria-required` injected into the child — no manual wiring needed

@@ -1,0 +1,75 @@
+export const metadata = { title: "Checkbox" };
+
+# Checkbox
+
+A checkbox with optional label, indeterminate state, and full keyboard support.
+
+## Usage
+
+```tsx
+import { Checkbox } from "anexui";
+
+<Checkbox label="Accept terms and conditions" />
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { Checkbox } from "anexui";
+
+function Example() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      label="Subscribe to newsletter"
+      checked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+}
+```
+
+## Indeterminate
+
+```tsx
+<Checkbox label="Select all" indeterminate />
+```
+
+## Disabled
+
+```tsx
+<Checkbox label="Disabled option" disabled />
+<Checkbox label="Disabled checked" disabled defaultChecked />
+```
+
+## Group with fieldset
+
+```tsx
+<fieldset>
+  <legend>Notifications</legend>
+  <Checkbox label="Email" defaultChecked />
+  <Checkbox label="SMS" />
+  <Checkbox label="Push" />
+</fieldset>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Visible text label — wraps in an accessible `<label>` |
+| `indeterminate` | `boolean` | `false` | Sets the mixed (indeterminate) state |
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | — | Uncontrolled initial state |
+| `disabled` | `boolean` | `false` | Disables the checkbox |
+| `onChange` | `ChangeEventHandler` | — | Change handler |
+
+The `type` prop is fixed to `"checkbox"` and cannot be overridden. All other standard `<input>` attributes are accepted.
+
+## Accessibility
+
+- Native `<input type="checkbox">` element
+- Label rendered as a `<label>` wrapping the input for a large click target
+- `indeterminate` state set via the DOM property (not an HTML attribute)
+- Group multiple checkboxes inside a `<fieldset>` with a `<legend>`

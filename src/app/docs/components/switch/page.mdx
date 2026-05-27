@@ -1,0 +1,68 @@
+export const metadata = { title: "Switch" };
+
+# Switch
+
+A toggle switch with `role="switch"` and `aria-checked` — semantically distinct from a checkbox.
+
+## Usage
+
+```tsx
+import { Switch } from "anexui";
+
+<Switch label="Dark mode" />
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { Switch } from "anexui";
+
+function Example() {
+  const [on, setOn] = useState(false);
+  return (
+    <Switch
+      label="Notifications"
+      checked={on}
+      onChange={(e) => setOn(e.target.checked)}
+    />
+  );
+}
+```
+
+## Default on
+
+```tsx
+<Switch label="Auto-save" defaultChecked />
+```
+
+## Disabled
+
+```tsx
+<Switch label="Feature locked" disabled />
+<Switch label="Always on" disabled defaultChecked />
+```
+
+## Without label
+
+```tsx
+<Switch aria-label="Toggle sidebar" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Visible text label next to the toggle |
+| `checked` | `boolean` | — | Controlled on/off state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled initial state |
+| `disabled` | `boolean` | `false` | Disables the switch |
+| `onChange` | `ChangeEventHandler` | — | Change handler |
+
+The `type` prop is fixed to `"checkbox"` internally. All other standard `<input>` attributes are accepted.
+
+## Accessibility
+
+- Uses `role="switch"` with `aria-checked` to distinguish from a regular checkbox
+- When `label` is omitted, provide `aria-label` or `aria-labelledby` on the component
+- Keyboard: `Space` toggles the switch; `Enter` is not required (but works)

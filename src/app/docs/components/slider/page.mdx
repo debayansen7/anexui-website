@@ -1,0 +1,84 @@
+export const metadata = { title: "Slider" };
+
+# Slider
+
+A range slider with ARIA value attributes and optional value display.
+
+## Usage
+
+```tsx
+import { Slider } from "anexui";
+
+<Slider defaultValue={50} />
+```
+
+## Show value
+
+```tsx
+<Slider defaultValue={30} showValue />
+```
+
+## Min / max / step
+
+```tsx
+<Slider min={0} max={200} step={10} defaultValue={100} showValue />
+```
+
+## Controlled
+
+```tsx
+import { useState } from "react";
+import { Slider } from "anexui";
+
+function Example() {
+  const [val, setVal] = useState(40);
+  return (
+    <div>
+      <Slider
+        value={val}
+        min={0}
+        max={100}
+        onChange={(e) => setVal(Number(e.target.value))}
+        showValue
+      />
+      <p>Volume: {val}%</p>
+    </div>
+  );
+}
+```
+
+## Disabled
+
+```tsx
+<Slider defaultValue={60} disabled />
+```
+
+## With label
+
+```tsx
+import { Label, Slider } from "anexui";
+
+<Label htmlFor="volume">Volume</Label>
+<Slider id="volume" defaultValue={70} showValue />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `step` | `number` | `1` | Step increment |
+| `showValue` | `boolean` | `false` | Renders the current value next to the track |
+| `value` | `number` | — | Controlled value |
+| `defaultValue` | `number` | — | Uncontrolled initial value |
+| `disabled` | `boolean` | `false` | Disables the slider |
+
+All standard `<input type="range">` attributes are accepted.
+
+## Accessibility
+
+- Built on `<input type="range">` — `role="slider"` is implicit
+- `aria-valuenow`, `aria-valuemin`, `aria-valuemax` are set automatically
+- Arrow keys move the value by `step`; `Home`/`End` jump to min/max
+- Always associate with a `<Label>` via `htmlFor` / `id`

@@ -1,0 +1,69 @@
+export const metadata = { title: "Table" };
+
+# Table
+
+A compound table with `scope="col"` on headers and an optional accessible caption.
+
+## Usage
+
+```tsx
+import { Table, TableHead, TableBody, TableRow, TableHeader, TableCell } from "anexui";
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableHeader>Name</TableHeader>
+      <TableHeader>Role</TableHeader>
+      <TableHeader>Status</TableHeader>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableCell>Alice Johnson</TableCell>
+      <TableCell>Designer</TableCell>
+      <TableCell><Badge variant="success">Active</Badge></TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob Smith</TableCell>
+      <TableCell>Engineer</TableCell>
+      <TableCell><Badge variant="warning">Away</Badge></TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+## With caption
+
+```tsx
+<Table caption="Team members">
+  …
+</Table>
+```
+
+## Row scope headers
+
+```tsx
+<TableRow>
+  <TableHeader scope="row">Q1 2024</TableHeader>
+  <TableCell>$24,000</TableCell>
+  <TableCell>$18,500</TableCell>
+</TableRow>
+```
+
+## Table Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `caption` | `string` | — | Accessible table caption rendered as `<caption>` |
+
+## TableHeader Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `scope` | `"col" \| "row" \| "colgroup" \| "rowgroup"` | `"col"` | Defines which cells the header relates to |
+
+## Accessibility
+
+- `<TableHeader>` renders as `<th>` with `scope="col"` by default
+- `caption` is the preferred way to give a table an accessible name (over `aria-label`)
+- Use `scope="row"` on the first cell of a row when it acts as a row header

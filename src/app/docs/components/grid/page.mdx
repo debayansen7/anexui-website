@@ -1,0 +1,50 @@
+export const metadata = { title: "Grid" };
+
+# Grid
+
+A CSS grid helper for equal-column layouts with configurable gap.
+
+## Usage
+
+```tsx
+import { Grid } from "anexui";
+
+<Grid cols={3} gap="6">
+  <Card>One</Card>
+  <Card>Two</Card>
+  <Card>Three</Card>
+</Grid>
+```
+
+## Column counts
+
+```tsx
+<Grid cols={1} gap="4">…</Grid>
+<Grid cols={2} gap="4">…</Grid>
+<Grid cols={3} gap="4">…</Grid>
+<Grid cols={4} gap="4">…</Grid>
+<Grid cols={6} gap="4">…</Grid>
+<Grid cols={12} gap="2">…</Grid>
+```
+
+## Independent row / column gap
+
+```tsx
+<Grid cols={3} rowGap="8" colGap="4">
+  <Card>A</Card>
+  <Card>B</Card>
+  <Card>C</Card>
+  <Card>D</Card>
+</Grid>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `cols` | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 8 \| 10 \| 12` | `1` | Number of equal-width columns |
+| `gap` | `"0"–"16"` | `"0"` | Shorthand gap (row + column) |
+| `rowGap` | `"0"–"16"` | — | Row gap only — overrides `gap` for rows |
+| `colGap` | `"0"–"16"` | — | Column gap only — overrides `gap` for columns |
+
+All standard HTML `<div>` attributes are accepted.

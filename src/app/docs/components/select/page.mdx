@@ -1,0 +1,71 @@
+export const metadata = { title: "Select" };
+
+# Select
+
+A styled native `<select>` dropdown with placeholder and error state.
+
+## Usage
+
+```tsx
+import { Select } from "anexui";
+
+<Select>
+  <option value="react">React</option>
+  <option value="vue">Vue</option>
+  <option value="svelte">Svelte</option>
+</Select>
+```
+
+## Placeholder
+
+```tsx
+<Select placeholder="Choose a framework">
+  <option value="react">React</option>
+  <option value="vue">Vue</option>
+</Select>
+```
+
+## Error state
+
+```tsx
+<Select error placeholder="Select an option" aria-describedby="sel-err">
+  <option value="a">Option A</option>
+</Select>
+<p id="sel-err">Please select an option.</p>
+```
+
+## Disabled
+
+```tsx
+<Select disabled>
+  <option>Unavailable</option>
+</Select>
+```
+
+## With label
+
+```tsx
+import { Label, Select } from "anexui";
+
+<Label htmlFor="framework">Framework</Label>
+<Select id="framework" placeholder="Pick one">
+  <option value="react">React</option>
+  <option value="vue">Vue</option>
+</Select>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `error` | `boolean` | `false` | Sets `aria-invalid`, applies error styling |
+| `placeholder` | `string` | — | Renders a disabled first option as a hint |
+| `disabled` | `boolean` | `false` | Disables the select |
+
+All standard HTML `<select>` attributes are accepted.
+
+## Accessibility
+
+- Native `<select>` — full keyboard and screen-reader support for free
+- `aria-invalid="true"` applied when `error` is set
+- Always associate with a `<Label>` via `htmlFor` / `id`
