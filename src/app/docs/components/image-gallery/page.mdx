@@ -1,0 +1,94 @@
+import ImageGalleryPreview from "@/components/docs/previews/ImageGalleryPreview";
+
+export const metadata = { title: "ImageGallery" };
+
+# ImageGallery
+
+A responsive image grid with a native `<dialog>` lightbox — click any thumbnail to open a fullscreen viewer with prev/next navigation, captions, and keyboard support.
+
+## Preview
+
+<ComponentPreview code={`import { ImageGallery } from "anexui";
+
+const images = [
+  { src: "/photos/mountain.jpg", alt: "Mountain landscape", caption: "Mountain landscape" },
+  { src: "/photos/ocean.jpg",    alt: "Ocean at sunset",    caption: "Ocean at sunset"    },
+  { src: "/photos/forest.jpg",   alt: "Forest path",        caption: "Forest path"        },
+];
+
+<ImageGallery images={images} cols={3} gap="md" lightbox />`}>
+  <ImageGalleryPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { ImageGallery } from "anexui";
+
+<ImageGallery
+  images={[
+    { src: "/img/a.jpg", alt: "Description", caption: "Optional caption" },
+    { src: "/img/b.jpg", alt: "Description" },
+  ]}
+  cols={3}
+  gap="md"
+  lightbox
+/>
+```
+
+## Column layouts
+
+```tsx
+<ImageGallery images={images} cols={2} gap="lg" />
+<ImageGallery images={images} cols={3} gap="md" />
+<ImageGallery images={images} cols={4} gap="sm" />
+```
+
+## Aspect ratios
+
+```tsx
+<ImageGallery images={images} aspectRatio="square"   /> {/* 1:1 — default */}
+<ImageGallery images={images} aspectRatio="video"    /> {/* 16:9 */}
+<ImageGallery images={images} aspectRatio="portrait" /> {/* 3:4 */}
+<ImageGallery images={images} aspectRatio="auto"     /> {/* natural image ratio */}
+```
+
+## Without lightbox
+
+```tsx
+<ImageGallery images={images} lightbox={false} />
+```
+
+## Lightbox keyboard controls
+
+| Key | Action |
+|---|---|
+| `←` / `→` | Previous / next image |
+| `Escape` | Close lightbox |
+| Click backdrop | Close lightbox |
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `images` | `GalleryImage[]` | — | Array of image objects |
+| `cols` | `2 \| 3 \| 4` | `3` | Number of grid columns |
+| `gap` | `"sm" \| "md" \| "lg"` | `"md"` | Gap between thumbnails |
+| `lightbox` | `boolean` | `true` | Enable click-to-fullscreen viewer |
+| `aspectRatio` | `"square" \| "video" \| "portrait" \| "auto"` | `"square"` | Thumbnail aspect ratio |
+| `className` | `string` | — | Extra class names on the grid wrapper |
+
+## GalleryImage type
+
+| Field | Type | Description |
+|---|---|---|
+| `src` | `string` | Image URL |
+| `alt` | `string` | Alt text (required for accessibility) |
+| `caption` | `string` | Optional caption shown on thumbnail hover and in lightbox |
+
+## Accessibility
+
+- All images require meaningful `alt` text
+- Lightbox uses a native `<dialog>` with `aria-label` set to the active image's alt text
+- Navigation buttons have descriptive `aria-label` attributes
+- Thumbnails use `loading="lazy"` for performance

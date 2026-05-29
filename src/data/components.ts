@@ -232,6 +232,16 @@ export const components: ComponentEntry[] = [
     requires: [],
     files: ["Divider.tsx", "Divider.module.css", "Divider.Type.ts"],
   },
+  {
+    id: "sidebar",
+    label: "Sidebar",
+    description: "Persistent collapsible aside panel for app layouts with header and footer slots.",
+    category: "Layout",
+    folderName: "Sidebar",
+    categorySlug: "layout",
+    requires: [],
+    files: ["Sidebar.tsx", "Sidebar.module.css", "Sidebar.Type.ts"],
+  },
 
   // Navigation ────────────────────────────────────────────────────────────────
   {
@@ -539,6 +549,16 @@ export const components: ComponentEntry[] = [
     categorySlug: "data-display",
     requires: [],
     files: ["Rating.tsx", "Rating.module.css", "Rating.Type.ts"],
+  },
+  {
+    id: "image-gallery",
+    label: "ImageGallery",
+    description: "Responsive image grid with a native dialog lightbox, keyboard navigation, and captions.",
+    category: "Data Display",
+    folderName: "ImageGallery",
+    categorySlug: "data-display",
+    requires: [],
+    files: ["ImageGallery.tsx", "ImageGallery.module.css", "ImageGallery.Type.ts"],
   },
 
   // Form ──────────────────────────────────────────────────────────────────────

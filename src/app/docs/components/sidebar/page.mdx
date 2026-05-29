@@ -1,0 +1,109 @@
+import SidebarPreview from "@/components/docs/previews/SidebarPreview";
+
+export const metadata = { title: "Sidebar" };
+
+# Sidebar
+
+A persistent collapsible `<aside>` panel for app layouts — narrows to a toggle-button strip when collapsed rather than disappearing entirely.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Sidebar } from "anexui";
+
+function App() {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar
+        isOpen={open}
+        onToggle={setOpen}
+        header={<span>My App</span>}
+      >
+        {/* SideNav, links, etc. */}
+      </Sidebar>
+      <main style={{ flex: 1 }}>Page content</main>
+    </div>
+  );
+}`}>
+  <SidebarPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { Sidebar } from "anexui";
+
+<div style={{ display: "flex", height: "100vh" }}>
+  <Sidebar header={<span>Anex UI</span>}>
+    <nav>…</nav>
+  </Sidebar>
+  <main style={{ flex: 1 }}>Content</main>
+</div>
+```
+
+## Controlled open state
+
+```tsx
+const [open, setOpen] = useState(true);
+
+<Sidebar isOpen={open} onToggle={setOpen}>
+  …
+</Sidebar>
+```
+
+## Uncontrolled (default open)
+
+```tsx
+<Sidebar defaultOpen={false}>
+  …
+</Sidebar>
+```
+
+## Right-side placement
+
+```tsx
+<div style={{ display: "flex" }}>
+  <main style={{ flex: 1 }}>Content</main>
+  <Sidebar side="right">…</Sidebar>
+</div>
+```
+
+## Custom width
+
+```tsx
+<Sidebar width={280} collapsedWidth="4rem">
+  …
+</Sidebar>
+```
+
+## With header and footer
+
+```tsx
+<Sidebar
+  header={<Logo />}
+  footer={<UserMenu />}
+>
+  <SideNav>…</SideNav>
+</Sidebar>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isOpen` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `true` | Uncontrolled default open state |
+| `onToggle` | `(open: boolean) => void` | — | Called when the toggle button is clicked |
+| `side` | `"left" \| "right"` | `"left"` | Which edge the sidebar is anchored to |
+| `width` | `string \| number` | `240` | Width when expanded (px or CSS value) |
+| `collapsedWidth` | `string \| number` | `"3.5rem"` | Width when collapsed — use `0` to fully hide |
+| `header` | `ReactNode` | — | Slot above the scrollable body |
+| `footer` | `ReactNode` | — | Slot below the scrollable body |
+| `className` | `string` | — | Extra class names on the `<aside>` element |
+
+## Accessibility
+
+- Renders as a native `<aside>` with `aria-label="Sidebar"` and `aria-expanded`
+- The toggle button has a descriptive `aria-label` that updates with open state
