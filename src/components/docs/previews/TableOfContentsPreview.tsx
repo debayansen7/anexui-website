@@ -3,12 +3,12 @@ import { useState } from "react";
 import { TableOfContents, Button } from "anexui";
 
 const TOC_ITEMS = [
-  { id: "preview",     label: "Preview",      level: 2 },
-  { id: "usage",       label: "Usage",        level: 2 },
-  { id: "controlled",  label: "Controlled",   level: 3 },
-  { id: "props",       label: "Props",        level: 2 },
-  { id: "toc-item",    label: "TocItem type", level: 3 },
-  { id: "a11y",        label: "Accessibility", level: 2 },
+  { id: "preview",     text: "Preview",       level: 2 as const },
+  { id: "usage",       text: "Usage",         level: 2 as const },
+  { id: "controlled",  text: "Controlled",    level: 3 as const },
+  { id: "props",       text: "Props",         level: 2 as const },
+  { id: "toc-item",    text: "TocItem type",  level: 3 as const },
+  { id: "a11y",        text: "Accessibility", level: 2 as const },
 ];
 
 export default function TableOfContentsPreview() {
@@ -41,7 +41,7 @@ export default function TableOfContentsPreview() {
             variant={activeId === item.id ? "primary" : "ghost"}
             onClick={() => setActiveId(item.id)}
           >
-            {item.label}
+            {item.text}
           </Button>
         ))}
       </div>
