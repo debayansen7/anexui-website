@@ -1,59 +1,75 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Spinner } from "anexui";
+import { Button } from "anexui";
+import { components, docNav } from "@/data/components";
 
-interface PagefindResult {
-  url: string;
-  excerpt: string;
-  meta: { title?: string };
+interface SearchResult {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  category: string;
 }
 
-interface PagefindAPI {
-  search: (q: string) => Promise<{
-    results: Array<{ data: () => Promise<PagefindResult> }>;
-  }>;
+// Build the full searchable index from the registry + static doc pages
+const SEARCH_INDEX: SearchResult[] = [
+  // Static doc pages from the nav
+  ...docNav
+    .filter((g) => g.section === "Getting Started")
+    .flatMap((g) =>
+      g.items.map((item) => ({
+        id: item.href,
+        title: item.label,
+        description: "Documentation",
+        href: item.href,
+        category: "Docs",
+      }))
+    ),
+  // All registered components
+  ...components.map((c) => ({
+    id: c.id,
+    title: c.label,
+    description: c.description,
+    href: `/docs/components/${c.id}`,
+    category: c.category,
+  })),
+];
+
+function search(query: string): SearchResult[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+
+  return SEARCH_INDEX.filter(
+    (r) =>
+      r.title.toLowerCase().includes(q) ||
+      r.description.toLowerCase().includes(q) ||
+      r.category.toLowerCase().includes(q)
+  ).slice(0, 10);
 }
 
-// Pagefind indexes .next/server/app, so URLs come back as /path/page.html — strip to the clean Next.js route
-function cleanUrl(url: string): string {
-  return url.replace(/\/page\.html$/, "").replace(/\/index\.html$/, "").replace(/\.html$/, "") || "/";
-}
-
-async function loadPagefind(): Promise<PagefindAPI | null> {
-  try {
-    // pagefind.js is generated into /public/pagefind/ at build time — doesn't exist during TS check
-    // @ts-expect-error: generated file, not resolvable at compile time
-    const pf = await import(/* webpackIgnore: true */ "/pagefind/pagefind.js");
-    return pf as PagefindAPI;
-  } catch {
-    return null;
-  }
-}
 
 export default function Search() {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<PagefindResult[]>([]);
+  const [open, setOpen]       = useState(false);
+  const [query, setQuery]     = useState("");
   const [activeIdx, setActiveIdx] = useState(0);
-  const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const pagefindRef = useRef<PagefindAPI | null>(null);
-  const router = useRouter();
+  const router   = useRouter();
 
-  const openModal = useCallback(async () => {
+  const results = useMemo(() => search(query), [query]);
+
+  // Reset active index when results change
+  useEffect(() => { setActiveIdx(0); }, [results.length]);
+
+  const openModal = useCallback(() => {
     setOpen(true);
-    if (!pagefindRef.current) {
-      pagefindRef.current = await loadPagefind();
-    }
     setTimeout(() => inputRef.current?.focus(), 30);
   }, []);
 
   const closeModal = useCallback(() => {
     setOpen(false);
     setQuery("");
-    setResults([]);
     setActiveIdx(0);
   }, []);
 
@@ -70,27 +86,13 @@ export default function Search() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, openModal, closeModal]);
 
-  const handleSearch = async (q: string) => {
-    setQuery(q);
-    setActiveIdx(0);
-    if (!q.trim() || !pagefindRef.current) { setResults([]); return; }
-    setLoading(true);
-    const res = await pagefindRef.current.search(q);
-    const data = await Promise.all(res.results.slice(0, 8).map((r) => r.data()));
-    setResults(data);
-    setLoading(false);
-  };
+  const navigate = (href: string) => { router.push(href); closeModal(); };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, results.length - 1)); }
     if (e.key === "ArrowUp")   { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); }
-    if (e.key === "Enter" && results[activeIdx]) {
-      router.push(cleanUrl(results[activeIdx].url));
-      closeModal();
-    }
+    if (e.key === "Enter" && results[activeIdx]) navigate(results[activeIdx].href);
   };
-
-  const navigate = (url: string) => { router.push(cleanUrl(url)); closeModal(); };
 
   return (
     <>
@@ -135,9 +137,9 @@ export default function Search() {
                 <input
                   ref={inputRef}
                   value={query}
-                  onChange={(e) => handleSearch(e.target.value)}
+                  onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Search docs..."
+                  placeholder="Search components and docs..."
                   autoComplete="off"
                   spellCheck={false}
                   className="flex-1 bg-transparent py-4 text-white placeholder-white/30 text-sm outline-none"
@@ -146,36 +148,35 @@ export default function Search() {
               </div>
 
               {/* Results */}
-              <div className="max-h-72 overflow-y-auto">
+              <div className="max-h-80 overflow-y-auto">
                 {!query && (
-                  <p className="px-4 py-6 text-center text-sm text-white/30">Type to search components and docs</p>
+                  <p className="px-4 py-6 text-center text-sm text-white/30">
+                    Type to search {SEARCH_INDEX.length} components and pages
+                  </p>
                 )}
-                {loading && (
-                  <div className="flex justify-center py-6">
-                    <Spinner size="sm" label="Searching" />
-                  </div>
+                {query && results.length === 0 && (
+                  <p className="px-4 py-6 text-center text-sm text-white/30">
+                    No results for &quot;{query}&quot;
+                  </p>
                 )}
-                {!loading && query && results.length === 0 && (
-                  <p className="px-4 py-6 text-center text-sm text-white/30">No results for &quot;{query}&quot;</p>
-                )}
-                {!loading && results.length > 0 && (
+                {results.length > 0 && (
                   <ul className="p-2" role="listbox">
                     {results.map((r, i) => (
-                      <li key={r.url} role="option" aria-selected={activeIdx === i}>
+                      <li key={r.id} role="option" aria-selected={activeIdx === i}>
                         <button
-                          onClick={() => navigate(r.url)}
+                          onClick={() => navigate(r.href)}
                           onMouseEnter={() => setActiveIdx(i)}
                           className={`w-full text-left px-3 py-2.5 rounded-xl transition-colors ${
                             activeIdx === i ? "bg-violet-600/20" : "hover:bg-white/5"
                           }`}
                         >
-                          <p className="text-sm text-white/80 font-medium mb-0.5 truncate">
-                            {r.meta?.title ?? r.url}
-                          </p>
-                          <p
-                            className="text-xs text-white/40 line-clamp-2 [&_mark]:bg-violet-500/30 [&_mark]:text-violet-300 [&_mark]:rounded-sm [&_mark]:px-0.5"
-                            dangerouslySetInnerHTML={{ __html: r.excerpt }}
-                          />
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <p className="text-sm text-white/80 font-medium truncate">{r.title}</p>
+                            <span className="text-[10px] text-white/25 border border-white/10 rounded px-1.5 py-0.5 shrink-0 leading-none">
+                              {r.category}
+                            </span>
+                          </div>
+                          <p className="text-xs text-white/40 truncate">{r.description}</p>
                         </button>
                       </li>
                     ))}
