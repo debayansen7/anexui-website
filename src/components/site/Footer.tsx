@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -5,9 +6,7 @@ export default function Footer() {
     <footer className="border-t border-white/8 mt-auto py-10">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
         <div className="flex items-center gap-2">
-          <span className="w-5 h-5 rounded bg-violet-600 flex items-center justify-center text-xs font-bold text-white">
-            A
-          </span>
+          <Image src="/logo.png" alt="Anex UI" width={24} height={24} className="rounded-md" />
           <span>Anex UI — MIT License</span>
         </div>
         <div className="flex items-center gap-6">
