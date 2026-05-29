@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Button, Tooltip } from "anexui";
 
 export default function CodeBlock({ children }: React.PropsWithChildren) {
   const preRef = useRef<HTMLPreElement>(null);
@@ -27,18 +28,22 @@ export default function CodeBlock({ children }: React.PropsWithChildren) {
       >
         {children}
       </pre>
-      <button
-        onClick={copy}
-        aria-label={copied ? "Copied!" : "Copy code"}
-        className={`absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium transition-all ${
-          copied
-            ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 opacity-100"
-            : "opacity-0 group-hover:opacity-100 bg-white/5 text-white/40 border border-white/10 hover:text-white/70 hover:bg-white/10"
-        }`}
-      >
-        {copied ? <CheckIcon /> : <CopyIcon />}
-        {copied ? "Copied" : "Copy"}
-      </button>
+      <Tooltip content={copied ? "Copied!" : "Copy code"} side="left">
+        <Button
+          variant="ghost"
+          size="xs"
+          onClick={copy}
+          aria-label={copied ? "Copied!" : "Copy code"}
+          className={`absolute top-3 right-3 gap-1.5 transition-all ${
+            copied
+              ? "bg-emerald-500/15! text-emerald-400! border! border-emerald-500/25! opacity-100"
+              : "opacity-0 group-hover:opacity-100"
+          }`}
+        >
+          {copied ? <CheckIcon /> : <CopyIcon />}
+          {copied ? "Copied" : "Copy"}
+        </Button>
+      </Tooltip>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button } from "anexui";
 
 type Theme = "dark" | "light";
 
@@ -26,13 +27,15 @@ export default function ThemeToggle() {
   }
 
   return (
-    <button
+    <Button
+      variant="ghost"
+      size="sm"
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      className="w-8 h-8 rounded-lg flex items-center justify-center text-white/50 hover:text-white/90 hover:bg-white/8 transition-colors"
+      className="p-0! w-8 h-8"
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-    </button>
+    </Button>
   );
 }
 

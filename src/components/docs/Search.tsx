@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button, Spinner } from "anexui";
 
 interface PagefindResult {
   url: string;
@@ -89,24 +90,28 @@ export default function Search() {
   return (
     <>
       {/* Desktop trigger */}
-      <button
+      <Button
+        variant="ghost"
+        size="sm"
         onClick={openModal}
         aria-label="Search docs"
-        className="hidden md:flex items-center gap-2 text-sm text-white/40 hover:text-white/60 bg-white/5 hover:bg-white/8 border border-white/10 rounded-lg px-3 py-1.5 transition-colors w-44"
+        className="hidden md:flex items-center gap-2 w-44 justify-start! font-normal!"
       >
         <SearchIcon />
         <span className="flex-1 text-left">Search docs...</span>
-        <kbd className="text-[11px] text-white/20 border border-white/10 rounded px-1 py-0.5 leading-none">⌘K</kbd>
-      </button>
+        <kbd className="text-[11px] opacity-30 border border-current/20 rounded px-1 py-0.5 leading-none">⌘K</kbd>
+      </Button>
 
       {/* Mobile trigger */}
-      <button
+      <Button
+        variant="ghost"
+        size="sm"
         onClick={openModal}
         aria-label="Search"
-        className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-white/50 hover:text-white hover:bg-white/8 transition-colors"
+        className="md:hidden p-0! w-8 h-8"
       >
         <SearchIcon />
-      </button>
+      </Button>
 
       {/* Modal */}
       {open && (
@@ -141,7 +146,9 @@ export default function Search() {
                   <p className="px-4 py-6 text-center text-sm text-white/30">Type to search components and docs</p>
                 )}
                 {loading && (
-                  <p className="px-4 py-6 text-center text-sm text-white/30">Searching…</p>
+                  <div className="flex justify-center py-6">
+                    <Spinner size="sm" label="Searching" />
+                  </div>
                 )}
                 {!loading && query && results.length === 0 && (
                   <p className="px-4 py-6 text-center text-sm text-white/30">No results for &quot;{query}&quot;</p>

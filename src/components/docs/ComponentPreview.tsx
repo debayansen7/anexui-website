@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { Button, Tabs, TabList, Tab, Tooltip } from "anexui";
 
 interface ComponentPreviewProps {
   /** The live rendered component demo */
@@ -12,7 +13,6 @@ interface ComponentPreviewProps {
 export default function ComponentPreview({ children, code }: ComponentPreviewProps) {
   const [tab, setTab] = useState<"preview" | "code">("preview");
   const [copied, setCopied] = useState(false);
-  const codeRef = useRef<HTMLPreElement>(null);
 
   const copy = async () => {
     await navigator.clipboard.writeText(code.trim());
@@ -27,43 +27,32 @@ export default function ComponentPreview({ children, code }: ComponentPreviewPro
         className="flex items-center justify-between px-3 py-2"
         style={{ background: "var(--bg-surface)", borderBottom: "1px solid var(--border)" }}
       >
-        <div className="flex gap-1">
-          {(["preview", "code"] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className="px-3 py-1 rounded-md text-xs font-medium capitalize transition-all"
-              style={
-                tab === t
-                  ? { background: "var(--accent)", color: "#fff" }
-                  : { color: "var(--text-muted)", background: "transparent" }
-              }
-            >
-              {t}
-            </button>
-          ))}
-        </div>
+        <Tabs activeId={tab} onChange={(id) => setTab(id as "preview" | "code")} variant="pill">
+          <TabList>
+            <Tab id="preview">Preview</Tab>
+            <Tab id="code">Code</Tab>
+          </TabList>
+        </Tabs>
 
         {tab === "code" && (
-          <button
-            onClick={copy}
-            className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium transition-all"
-            style={
-              copied
-                ? { background: "rgba(52,211,153,0.12)", color: "#34d399", border: "1px solid rgba(52,211,153,0.25)" }
-                : { color: "var(--text-muted)", background: "transparent", border: "1px solid var(--border)" }
-            }
-          >
-            {copied ? <CheckIcon /> : <CopyIcon />}
-            {copied ? "Copied" : "Copy"}
-          </button>
+          <Tooltip content={copied ? "Copied!" : "Copy"} side="left">
+            <Button
+              variant="ghost"
+              size="xs"
+              onClick={copy}
+              className={`gap-1.5 ${copied ? "text-emerald-400!" : ""}`}
+            >
+              {copied ? <CheckIcon /> : <CopyIcon />}
+              {copied ? "Copied" : "Copy"}
+            </Button>
+          </Tooltip>
         )}
       </div>
 
       {/* Preview pane */}
       {tab === "preview" && (
         <div
-          className="flex items-center justify-center flex-wrap gap-3 p-8 min-h-[140px]"
+          className="flex items-center justify-center flex-wrap gap-3 p-8 min-h-35"
           style={{ background: "var(--bg)" }}
         >
           {children}
@@ -74,7 +63,6 @@ export default function ComponentPreview({ children, code }: ComponentPreviewPro
       {tab === "code" && (
         <div style={{ background: "var(--pre-bg)" }}>
           <pre
-            ref={codeRef}
             className="overflow-x-auto p-5 text-sm font-mono leading-relaxed m-0"
             style={{ color: "var(--pre-text)" }}
           >
