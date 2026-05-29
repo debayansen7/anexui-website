@@ -1,8 +1,19 @@
+import TextareaPreview from "@/components/docs/previews/TextareaPreview";
+
 export const metadata = { title: "Textarea" };
 
 # Textarea
 
 A multiline text input with resize control and error state.
+
+## Preview
+
+<ComponentPreview code={`import { Textarea } from "anexui";
+
+<Textarea placeholder="Write something…" rows={3} />
+<Textarea error placeholder="Error state" rows={2} resize="none" />`}>
+  <TextareaPreview />
+</ComponentPreview>
 
 ## Usage
 

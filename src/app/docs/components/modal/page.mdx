@@ -1,8 +1,25 @@
+import ModalPreview from "@/components/docs/previews/ModalPreview";
+
 export const metadata = { title: "Modal" };
 
 # Modal
 
 A dialog built on native `<dialog>` + `showModal()` with a focus trap, `Escape` to close, and backdrop-click dismiss.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Modal, Button } from "anexui";
+
+const [open, setOpen] = useState(false);
+
+<Button onClick={() => setOpen(true)}>Open modal</Button>
+<Modal isOpen={open} onClose={() => setOpen(false)} title="Confirm action" size="md">
+  <p>Are you sure you want to delete this item?</p>
+  <Button variant="danger" onClick={() => setOpen(false)}>Delete</Button>
+</Modal>`}>
+  <ModalPreview />
+</ComponentPreview>
 
 ## Usage
 

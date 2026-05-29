@@ -1,8 +1,21 @@
+import CheckboxPreview from "@/components/docs/previews/CheckboxPreview";
+
 export const metadata = { title: "Checkbox" };
 
 # Checkbox
 
 A checkbox with optional label, indeterminate state, and full keyboard support.
+
+## Preview
+
+<ComponentPreview code={`import { Checkbox } from "anexui";
+
+<Checkbox label="Accept terms and conditions" />
+<Checkbox label="Subscribe to newsletter" defaultChecked />
+<Checkbox label="Partial selection" indeterminate />
+<Checkbox label="Unavailable option" disabled />`}>
+  <CheckboxPreview />
+</ComponentPreview>
 
 ## Usage
 

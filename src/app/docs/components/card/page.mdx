@@ -1,66 +1,152 @@
+import CardPreview from "@/components/docs/previews/CardPreview";
+
 export const metadata = { title: "Card" };
 
 # Card
 
-A compound surface component: `Card`, `CardHeader`, `CardBody`, `CardFooter`.
+A compound surface component — `Card`, `CardHeader`, `CardBody`, `CardFooter` — with configurable rounding, shadow, padding, margin, and a hover-lift animation.
 
-## Usage
+## Preview
+
+<ComponentPreview code={`import { Card, CardHeader, CardBody, CardFooter, Button, Avatar, Badge } from "anexui";
+
+// Compound card
+<Card shadow="sm" rounded="xl">
+  <CardHeader>Project report</CardHeader>
+  <CardBody>Q2 metrics up 14% vs last quarter.</CardBody>
+  <CardFooter>
+    <Button size="sm" variant="primary">View</Button>
+  </CardFooter>
+</Card>
+
+// Profile card with avatar
+<Card shadow="sm" rounded="xl">
+  <CardBody>
+    <Avatar initials="DS" size="lg" status="online" />
+    <Badge variant="primary">Pro</Badge>
+  </CardBody>
+</Card>
+
+// Standalone hoverable card
+<Card padding="var(--space-5)" shadow="md" rounded="xl" hoverable>
+  Hover me to see the lift effect
+</Card>`}>
+  <CardPreview />
+</ComponentPreview>
+
+## Compound usage
 
 ```tsx
-import { Card, CardHeader, CardBody, CardFooter } from "anexui";
+import { Card, CardHeader, CardBody, CardFooter, Button } from "anexui";
 
-<Card>
-  <CardHeader>
-    <h3>Card title</h3>
-  </CardHeader>
+<Card shadow="sm" rounded="xl">
+  <CardHeader>Card title</CardHeader>
   <CardBody>
     <p>Card content goes here.</p>
   </CardBody>
   <CardFooter>
-    <Button variant="outline" size="sm">Cancel</Button>
-    <Button variant="solid" size="sm">Save</Button>
+    <Button variant="ghost" size="sm">Cancel</Button>
+    <Button variant="primary" size="sm">Save</Button>
   </CardFooter>
 </Card>
 ```
 
-## Card without sections
+## Standalone card (with padding)
+
+When not using sub-components, pass `padding` to add internal spacing. The recommended default is `"2rem"`:
 
 ```tsx
-<Card style={{ padding: 24 }}>
-  <p>Simple card with direct padding.</p>
+<Card padding="2rem" rounded="lg" shadow="md">
+  <p>Simple card — no sections needed.</p>
 </Card>
 ```
 
-## Clickable card
+## Rounded variants
 
 ```tsx
-<Card
-  as="a"
-  href="/dashboard"
-  style={{ cursor: "pointer" }}
-  className="hover:border-violet-500 transition-colors"
->
-  <CardBody>Click to navigate →</CardBody>
+<Card rounded="none">Sharp corners</Card>
+<Card rounded="sm">Slight rounding</Card>
+<Card rounded="md">Medium rounding</Card>
+<Card rounded="lg">Large rounding</Card>
+<Card rounded="xl">Extra large (default)</Card>
+<Card rounded="2xl">2XL rounding</Card>
+<Card rounded="full">Full / pill</Card>
+```
+
+## Shadow variants
+
+```tsx
+<Card shadow="sm">Subtle shadow</Card>
+<Card shadow="md">Medium shadow</Card>
+<Card shadow="lg">Large shadow</Card>
+<Card shadow="xl">Extra large shadow</Card>
+```
+
+## Hoverable (lift animation)
+
+Adds a smooth `translateY` lift and enhanced shadow on hover. Respects `prefers-reduced-motion`.
+
+```tsx
+<Card hoverable shadow="sm" rounded="xl" padding="2rem">
+  Hover to lift
 </Card>
 ```
 
-## With avatar and badge
+## Product card example
 
 ```tsx
-<Card>
-  <CardHeader>
-    <Stack direction="row" gap="3" align="center">
-      <Avatar src="/user.jpg" alt="Alice" size="sm" />
-      <div>
-        <p>Alice Johnson</p>
-        <Badge variant="success" size="sm">Active</Badge>
-      </div>
+import { Card, CardBody, Button, Badge, Stack } from "anexui";
+
+<Card shadow="md" rounded="xl" hoverable style={{ maxWidth: 280 }}>
+  <div style={{ height: 160, background: "var(--color-primary-subtle)" }} />
+  <CardBody>
+    <Stack direction="row" justify="between" align="center">
+      <span style={{ fontWeight: 600 }}>Wireless Headphones</span>
+      <Badge variant="success" size="sm">In stock</Badge>
     </Stack>
-  </CardHeader>
-  <CardBody>User joined 3 days ago.</CardBody>
+    <Stack direction="row" justify="between" align="center">
+      <span style={{ fontWeight: 700 }}>$129.99</span>
+      <Button size="sm" variant="primary">Add to cart</Button>
+    </Stack>
+  </CardBody>
 </Card>
 ```
 
-## Props
+## Profile card example
 
-All `Card`, `CardHeader`, `CardBody`, and `CardFooter` accept standard HTML `<div>` attributes including `className`, `style`, and `onClick`.
+```tsx
+import { Card, CardBody, CardFooter, Avatar, Badge, Button, Stack } from "anexui";
+
+<Card shadow="sm" rounded="xl" style={{ maxWidth: 300 }}>
+  <CardBody>
+    <Stack direction="column" gap="3" align="center">
+      <Avatar initials="DS" size="xl" status="online" />
+      <Stack direction="column" gap="1" align="center">
+        <span style={{ fontWeight: 700 }}>Debayan Sen</span>
+        <span style={{ color: "var(--color-text-subtle)" }}>Frontend Engineer</span>
+        <Badge variant="primary">Pro</Badge>
+      </Stack>
+    </Stack>
+  </CardBody>
+  <CardFooter>
+    <Stack direction="row" gap="2" justify="center">
+      <Button variant="outline" size="sm">Message</Button>
+      <Button variant="primary" size="sm">Follow</Button>
+    </Stack>
+  </CardFooter>
+</Card>
+```
+
+## Card Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `rounded` | `"none" \| "sm" \| "md" \| "lg" \| "xl" \| "2xl" \| "full"` | `"xl"` | Border-radius preset |
+| `padding` | `string \| number` | — | Inline padding override (e.g. `"2rem"` or `32`). For standalone cards. |
+| `margin` | `string \| number` | — | Inline margin override |
+| `shadow` | `"none" \| "sm" \| "md" \| "lg" \| "xl"` | — | Box-shadow preset |
+| `hoverable` | `boolean` | `false` | Lifts the card on hover via `translateY` + shadow |
+
+All standard HTML `<div>` attributes (`className`, `style`, `onClick`, etc.) are also accepted.
+
+`CardHeader`, `CardBody`, and `CardFooter` accept `className` and `children`.

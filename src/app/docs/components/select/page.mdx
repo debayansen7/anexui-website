@@ -1,8 +1,25 @@
+import SelectPreview from "@/components/docs/previews/SelectPreview";
+
 export const metadata = { title: "Select" };
 
 # Select
 
 A styled native `<select>` dropdown with placeholder and error state.
+
+## Preview
+
+<ComponentPreview code={`import { Select } from "anexui";
+
+<Select placeholder="Choose a country…">
+  <option value="us">United States</option>
+  <option value="uk">United Kingdom</option>
+  <option value="in">India</option>
+</Select>
+<Select error>
+  <option value="">Select a plan — error state</option>
+</Select>`}>
+  <SelectPreview />
+</ComponentPreview>
 
 ## Usage
 

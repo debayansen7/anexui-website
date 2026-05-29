@@ -1,8 +1,25 @@
+import TimelinePreview from "@/components/docs/previews/TimelinePreview";
+
 export const metadata = { title: "Timeline" };
 
 # Timeline
 
 A vertical sequence of events with status dots, connector lines, and `aria-current="step"` on the active item.
+
+## Preview
+
+<ComponentPreview code={`import { Timeline } from "anexui";
+
+<Timeline items={[
+  { id: "1", title: "Order placed", time: "10:00 AM", status: "completed" },
+  { id: "2", title: "Processing", time: "10:15 AM", status: "completed" },
+  { id: "3", title: "Shipped", time: "2:00 PM", status: "current",
+    description: "In transit with FedEx" },
+  { id: "4", title: "Out for delivery", status: "upcoming" },
+  { id: "5", title: "Delivered", status: "upcoming" },
+]} />`}>
+  <TimelinePreview />
+</ComponentPreview>
 
 ## Usage
 

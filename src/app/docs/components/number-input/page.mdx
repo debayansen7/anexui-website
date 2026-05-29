@@ -1,8 +1,21 @@
+import NumberInputPreview from "@/components/docs/previews/NumberInputPreview";
+
 export const metadata = { title: "NumberInput" };
 
 # NumberInput
 
 A numeric input with increment/decrement buttons, min/max clamping, and hidden native spinners.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { NumberInput } from "anexui";
+
+const [qty, setQty] = useState(1);
+
+<NumberInput value={qty} onChange={setQty} min={1} max={99} step={1} />`}>
+  <NumberInputPreview />
+</ComponentPreview>
 
 ## Usage
 

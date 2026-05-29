@@ -1,8 +1,27 @@
+import TabsPreview from "@/components/docs/previews/TabsPreview";
+
 export const metadata = { title: "Tabs" };
 
 # Tabs
 
 A tabbed interface with roving tabindex keyboard navigation and two visual variants.
+
+## Preview
+
+<ComponentPreview code={`import { Tabs, TabList, Tab, TabPanel } from "anexui";
+
+<Tabs defaultActiveId="overview" variant="line">
+  <TabList>
+    <Tab id="overview">Overview</Tab>
+    <Tab id="analytics">Analytics</Tab>
+    <Tab id="settings">Settings</Tab>
+  </TabList>
+  <TabPanel id="overview">Overview content</TabPanel>
+  <TabPanel id="analytics">Analytics content</TabPanel>
+  <TabPanel id="settings">Settings content</TabPanel>
+</Tabs>`}>
+  <TabsPreview />
+</ComponentPreview>
 
 ## Usage
 

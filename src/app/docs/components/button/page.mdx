@@ -1,29 +1,50 @@
+import ButtonPreview from "@/components/docs/previews/ButtonPreview";
+
 export const metadata = { title: "Button" };
 
 # Button
 
-A versatile button with multiple variants, sizes, loading state, and full keyboard accessibility.
+A versatile button with five variants, four sizes, a loading state, and full keyboard accessibility.
+
+## Preview
+
+<ComponentPreview code={`import { Button } from "anexui";
+
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="danger">Danger</Button>
+
+// Loading state — shows spinner, disables interaction
+<Button variant="primary" loading>Saving…</Button>`}>
+  <ButtonPreview />
+</ComponentPreview>
 
 ## Usage
 
 ```tsx
 import { Button } from "anexui";
 
-<Button variant="solid" size="md">Click me</Button>
+<Button variant="primary" size="md" onClick={() => {}}>
+  Save changes
+</Button>
 ```
 
 ## Variants
 
 ```tsx
-<Button variant="solid">Solid</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>
+<Button variant="danger">Delete</Button>
 ```
 
 ## Sizes
 
 ```tsx
+<Button size="xs">Extra small</Button>
 <Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>
@@ -32,38 +53,29 @@ import { Button } from "anexui";
 ## Loading state
 
 ```tsx
-<Button isLoading>Saving…</Button>
-<Button isLoading loadingText="Uploading…">Upload</Button>
+<Button variant="primary" loading>Saving…</Button>
 ```
 
 ## Disabled
 
 ```tsx
-<Button disabled>Disabled</Button>
-```
-
-## As a link
-
-```tsx
-<Button as="a" href="/dashboard">Go to dashboard</Button>
+<Button variant="primary" disabled>Disabled</Button>
 ```
 
 ## Props
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `"solid" \| "outline" \| "ghost" \| "link"` | `"solid"` | Visual style |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Button size |
-| `isLoading` | `boolean` | `false` | Shows spinner, sets `aria-busy` |
-| `loadingText` | `string` | — | Text shown while loading |
-| `disabled` | `boolean` | `false` | Disables the button, sets `aria-disabled` |
+| `variant` | `"primary" \| "secondary" \| "outline" \| "ghost" \| "danger"` | `"primary"` | Visual style |
+| `size` | `"xs" \| "sm" \| "md" \| "lg"` | `"md"` | Button size |
+| `loading` | `boolean` | `false` | Shows spinner and sets `aria-busy`; disables interaction |
+| `disabled` | `boolean` | `false` | Disables the button |
 | `type` | `"button" \| "submit" \| "reset"` | `"button"` | HTML button type |
 
-All standard HTML `<button>` attributes are also accepted.
+All standard HTML `<button>` attributes are accepted.
 
 ## Accessibility
 
 - Uses a native `<button>` element
 - `aria-busy="true"` is set automatically during loading
-- `aria-disabled="true"` is set when `disabled` — the button remains focusable for screen readers
 - `type="button"` by default to prevent accidental form submission

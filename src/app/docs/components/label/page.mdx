@@ -1,8 +1,22 @@
+import LabelPreview from "@/components/docs/previews/LabelPreview";
+
 export const metadata = { title: "Label" };
 
 # Label
 
 A styled `<label>` element with an optional required indicator.
+
+## Preview
+
+<ComponentPreview code={`import { Label, Input } from "anexui";
+
+<Label htmlFor="email">Email address</Label>
+<Input id="email" type="email" placeholder="you@example.com" />
+
+<Label htmlFor="name" required>Full name</Label>
+<Input id="name" placeholder="John Doe" />`}>
+  <LabelPreview />
+</ComponentPreview>
 
 ## Usage
 

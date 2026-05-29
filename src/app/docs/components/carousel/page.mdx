@@ -1,8 +1,22 @@
+import CarouselPreview from "@/components/docs/previews/CarouselPreview";
+
 export const metadata = { title: "Carousel" };
 
 # Carousel
 
 A slide carousel with arrows, dots, autoplay, loop, and full W3C ARIA carousel pattern.
+
+## Preview
+
+<ComponentPreview code={`import { Carousel } from "anexui";
+
+<Carousel autoPlay interval={3000} loop showArrows showDots label="Feature highlights">
+  <div>Slide 1 content</div>
+  <div>Slide 2 content</div>
+  <div>Slide 3 content</div>
+</Carousel>`}>
+  <CarouselPreview />
+</ComponentPreview>
 
 ## Usage
 

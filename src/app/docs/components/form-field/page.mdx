@@ -1,8 +1,24 @@
+import FormFieldPreview from "@/components/docs/previews/FormFieldPreview";
+
 export const metadata = { title: "FormField" };
 
 # FormField
 
 A wrapper that bundles a `Label`, any input, helper text, and error text. Automatically injects `id`, `aria-describedby`, `aria-invalid`, and `aria-required` into the child control via `cloneElement`.
+
+## Preview
+
+<ComponentPreview code={`import { FormField, Input } from "anexui";
+
+<FormField label="Email address" helperText="We'll never share your email." required>
+  <Input type="email" placeholder="you@example.com" />
+</FormField>
+
+<FormField label="Password" required error errorText="Must be at least 8 characters.">
+  <Input type="password" />
+</FormField>`}>
+  <FormFieldPreview />
+</ComponentPreview>
 
 ## Usage
 

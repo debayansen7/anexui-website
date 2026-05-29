@@ -1,8 +1,30 @@
+import PopoverPreview from "@/components/docs/previews/PopoverPreview";
+
 export const metadata = { title: "Popover" };
 
 # Popover
 
 A click-triggered floating panel with `aria-expanded`, `aria-haspopup`, and `aria-controls` injected onto the trigger.
+
+## Preview
+
+<ComponentPreview code={`import { Popover, Button } from "anexui";
+
+<Popover
+  content={
+    <div>
+      <p>Filter options</p>
+      <button>By date</button>
+      <button>By name</button>
+    </div>
+  }
+  side="bottom"
+  align="start"
+>
+  <Button variant="outline">Filter ▾</Button>
+</Popover>`}>
+  <PopoverPreview />
+</ComponentPreview>
 
 ## Usage
 

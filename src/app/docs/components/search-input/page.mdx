@@ -1,8 +1,26 @@
+import SearchInputPreview from "@/components/docs/previews/SearchInputPreview";
+
 export const metadata = { title: "SearchInput" };
 
 # SearchInput
 
 A `type="search"` input with a built-in search icon, clear button, and hidden native browser cancel.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { SearchInput } from "anexui";
+
+const [query, setQuery] = useState("");
+
+<SearchInput
+  placeholder="Search components…"
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  onClear={() => setQuery("")}
+/>`}>
+  <SearchInputPreview />
+</ComponentPreview>
 
 ## Usage
 

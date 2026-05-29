@@ -1,8 +1,24 @@
+import StepperPreview from "@/components/docs/previews/StepperPreview";
+
 export const metadata = { title: "Stepper" };
 
 # Stepper
 
 A multi-step progress indicator — horizontal or vertical — with `aria-current="step"`.
+
+## Preview
+
+<ComponentPreview code={`import { Stepper } from "anexui";
+
+const steps = [
+  { id: "1", label: "Account", description: "Create your account" },
+  { id: "2", label: "Profile", description: "Set up your profile" },
+  { id: "3", label: "Review", description: "Confirm details" },
+];
+
+<Stepper steps={steps} activeStep={1} orientation="horizontal" />`}>
+  <StepperPreview />
+</ComponentPreview>
 
 ## Usage
 

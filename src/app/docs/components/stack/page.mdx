@@ -1,8 +1,27 @@
+import StackPreview from "@/components/docs/previews/StackPreview";
+
 export const metadata = { title: "Stack" };
 
 # Stack
 
 A flexbox layout helper for arranging children in a row or column with consistent spacing.
+
+## Preview
+
+<ComponentPreview code={`import { Stack } from "anexui";
+
+<Stack direction="row" gap="3" align="center">
+  <div>Row</div>
+  <div>Item</div>
+  <div>Stack</div>
+</Stack>
+
+<Stack direction="row" gap="3" justify="between" style={{ width: "100%" }}>
+  <div>Left</div>
+  <div>Right</div>
+</Stack>`}>
+  <StackPreview />
+</ComponentPreview>
 
 ## Usage
 

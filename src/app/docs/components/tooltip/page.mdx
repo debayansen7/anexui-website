@@ -1,8 +1,24 @@
+import TooltipPreview from "@/components/docs/previews/TooltipPreview";
+
 export const metadata = { title: "Tooltip" };
 
 # Tooltip
 
 A pure-CSS tooltip that appears on hover and focus. Uses `role="tooltip"` and `aria-describedby`.
+
+## Preview
+
+<ComponentPreview code={`import { Tooltip, Button } from "anexui";
+
+<Tooltip content="Saves your progress" side="top">
+  <Button variant="primary">Save</Button>
+</Tooltip>
+
+<Tooltip content="Permanently removes the item" side="bottom">
+  <Button variant="danger">Delete</Button>
+</Tooltip>`}>
+  <TooltipPreview />
+</ComponentPreview>
 
 ## Usage
 

@@ -1,8 +1,23 @@
+import BreadcrumbPreview from "@/components/docs/previews/BreadcrumbPreview";
+
 export const metadata = { title: "Breadcrumb" };
 
 # Breadcrumb
 
 A navigation trail with `<nav aria-label="Breadcrumb">` and `aria-current="page"` on the last item.
+
+## Preview
+
+<ComponentPreview code={`import { Breadcrumb } from "anexui";
+
+<Breadcrumb items={[
+  { label: "Home", href: "#" },
+  { label: "Products", href: "#" },
+  { label: "Electronics", href: "#" },
+  { label: "Headphones" },
+]} />`}>
+  <BreadcrumbPreview />
+</ComponentPreview>
 
 ## Usage
 

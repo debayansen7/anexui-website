@@ -1,8 +1,25 @@
+import GridPreview from "@/components/docs/previews/GridPreview";
+
 export const metadata = { title: "Grid" };
 
 # Grid
 
 A CSS grid helper for equal-column layouts with configurable gap.
+
+## Preview
+
+<ComponentPreview code={`import { Grid } from "anexui";
+
+<Grid cols={3} gap="4">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+  <div>Four</div>
+  <div>Five</div>
+  <div>Six</div>
+</Grid>`}>
+  <GridPreview />
+</ComponentPreview>
 
 ## Usage
 

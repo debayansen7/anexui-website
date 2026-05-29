@@ -1,8 +1,24 @@
+import BadgePreview from "@/components/docs/previews/BadgePreview";
+
 export const metadata = { title: "Badge" };
 
 # Badge
 
 A small status indicator — label mode or dot mode — with semantic colour variants.
+
+## Preview
+
+<ComponentPreview code={`import { Badge } from "anexui";
+
+<Badge variant="default">Default</Badge>
+<Badge variant="primary">New</Badge>
+<Badge variant="success">Approved</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="error">Failed</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="success" dot />`}>
+  <BadgePreview />
+</ComponentPreview>
 
 ## Usage
 

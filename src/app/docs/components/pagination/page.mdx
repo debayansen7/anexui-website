@@ -1,8 +1,21 @@
+import PaginationPreview from "@/components/docs/previews/PaginationPreview";
+
 export const metadata = { title: "Pagination" };
 
 # Pagination
 
 Page navigation with smart ellipsis, `aria-current`, and configurable sibling count.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Pagination } from "anexui";
+
+const [page, setPage] = useState(1);
+
+<Pagination total={10} page={page} onChange={setPage} siblings={1} />`}>
+  <PaginationPreview />
+</ComponentPreview>
 
 ## Usage
 

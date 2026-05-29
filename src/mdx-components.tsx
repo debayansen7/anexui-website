@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import CodeBlock from "@/components/docs/CodeBlock";
+import ComponentPreview from "@/components/docs/ComponentPreview";
 
 function extractText(node: React.ReactNode): string {
   if (typeof node === "string") return node;
@@ -73,6 +74,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ children }) => (
       <td className="px-4 py-3 text-white/70 border-b border-white/5">{children}</td>
     ),
+    ComponentPreview,
     ...components,
   };
 }

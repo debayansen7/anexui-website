@@ -1,8 +1,22 @@
+import AvatarPreview from "@/components/docs/previews/AvatarPreview";
+
 export const metadata = { title: "Avatar" };
 
 # Avatar
 
 A user avatar with image support, initials fallback, status dot, and multiple sizes.
+
+## Preview
+
+<ComponentPreview code={`import { Avatar } from "anexui";
+
+<Avatar initials="AC" size="xl" status="online" />
+<Avatar initials="BM" size="lg" status="away" />
+<Avatar initials="CW" size="md" status="busy" />
+<Avatar initials="DS" size="sm" status="offline" />
+<Avatar size="xs" />`}>
+  <AvatarPreview />
+</ComponentPreview>
 
 ## Usage
 

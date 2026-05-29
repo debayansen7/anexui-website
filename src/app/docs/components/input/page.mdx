@@ -1,8 +1,21 @@
+import InputPreview from "@/components/docs/previews/InputPreview";
+
 export const metadata = { title: "Input" };
 
 # Input
 
 A text input field with error state support and full ARIA wiring.
+
+## Preview
+
+<ComponentPreview code={`import { Input } from "anexui";
+
+<Input placeholder="Your name" />
+<Input type="email" placeholder="you@example.com" />
+<Input error placeholder="Invalid — error state" />
+<Input disabled placeholder="Disabled input" />`}>
+  <InputPreview />
+</ComponentPreview>
 
 ## Usage
 

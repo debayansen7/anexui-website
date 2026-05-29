@@ -1,8 +1,21 @@
+import ProgressPreview from "@/components/docs/previews/ProgressPreview";
+
 export const metadata = { title: "Progress" };
 
 # Progress
 
 A progress bar with `role="progressbar"` and full ARIA value wiring.
+
+## Preview
+
+<ComponentPreview code={`import { Progress } from "anexui";
+
+<Progress value={65} label="Upload progress" showValue />
+<Progress value={100} variant="success" label="Complete" showValue />
+<Progress value={42} variant="warning" label="Storage quota" showValue />
+<Progress value={88} variant="error" label="CPU usage" showValue />`}>
+  <ProgressPreview />
+</ComponentPreview>
 
 ## Usage
 

@@ -1,8 +1,24 @@
+import DrawerPreview from "@/components/docs/previews/DrawerPreview";
+
 export const metadata = { title: "Drawer" };
 
 # Drawer
 
 A side panel that slides in from any edge — built on the same native `<dialog>` pattern as Modal.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Drawer, Button } from "anexui";
+
+const [open, setOpen] = useState(false);
+
+<Button onClick={() => setOpen(true)}>Open drawer</Button>
+<Drawer isOpen={open} onClose={() => setOpen(false)} side="right" size="md" title="Settings">
+  <p>Drawer content here</p>
+</Drawer>`}>
+  <DrawerPreview />
+</ComponentPreview>
 
 ## Usage
 

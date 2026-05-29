@@ -1,8 +1,27 @@
+import AccordionPreview from "@/components/docs/previews/AccordionPreview";
+
 export const metadata = { title: "Accordion" };
 
 # Accordion
 
 A compound collapsible list using `hidden` attribute and `aria-expanded` / `aria-controls`.
+
+## Preview
+
+<ComponentPreview code={`import { Accordion, AccordionItem, AccordionTrigger, AccordionPanel } from "anexui";
+
+<Accordion defaultOpen="q1">
+  <AccordionItem id="q1">
+    <AccordionTrigger>Is Anex UI free?</AccordionTrigger>
+    <AccordionPanel>Yes — MIT licensed.</AccordionPanel>
+  </AccordionItem>
+  <AccordionItem id="q2">
+    <AccordionTrigger>Does it support dark mode?</AccordionTrigger>
+    <AccordionPanel>Yes, via data-theme attribute.</AccordionPanel>
+  </AccordionItem>
+</Accordion>`}>
+  <AccordionPreview />
+</ComponentPreview>
 
 ## Usage
 

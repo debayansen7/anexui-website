@@ -1,8 +1,25 @@
+import ToastPreview from "@/components/docs/previews/ToastPreview";
+
 export const metadata = { title: "Toast" };
 
 # Toast
 
 A notification system with a `ToastProvider` context and `useToast` hook. Supports auto-dismiss and manual close.
+
+## Preview
+
+<ComponentPreview code={`import { ToastProvider, useToast } from "anexui";
+
+// Wrap your app once:
+<ToastProvider><App /></ToastProvider>
+
+// Then in any component:
+const { toast } = useToast();
+toast("Saved!");
+toast({ message: "Success!", type: "success" });
+toast({ message: "Failed", type: "error" });`}>
+  <ToastPreview />
+</ComponentPreview>
 
 ## Setup
 

@@ -1,8 +1,20 @@
+import SwitchPreview from "@/components/docs/previews/SwitchPreview";
+
 export const metadata = { title: "Switch" };
 
 # Switch
 
 A toggle switch with `role="switch"` and `aria-checked` — semantically distinct from a checkbox.
+
+## Preview
+
+<ComponentPreview code={`import { Switch } from "anexui";
+
+<Switch label="Enable notifications" />
+<Switch label="Dark mode" defaultChecked />
+<Switch label="Unavailable toggle" disabled />`}>
+  <SwitchPreview />
+</ComponentPreview>
 
 ## Usage
 

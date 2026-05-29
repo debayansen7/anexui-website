@@ -1,8 +1,22 @@
+import TagPreview from "@/components/docs/previews/TagPreview";
+
 export const metadata = { title: "Tag" };
 
 # Tag
 
 A small label chip with colour variants and an optional dismiss button.
+
+## Preview
+
+<ComponentPreview code={`import { Tag } from "anexui";
+
+<Tag variant="primary">React</Tag>
+<Tag variant="success">Verified</Tag>
+<Tag variant="warning">Beta</Tag>
+<Tag variant="info">v2.0</Tag>
+<Tag variant="primary" onRemove={() => {}}>Removable</Tag>`}>
+  <TagPreview />
+</ComponentPreview>
 
 ## Usage
 

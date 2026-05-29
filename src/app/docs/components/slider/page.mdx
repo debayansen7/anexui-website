@@ -1,8 +1,19 @@
+import SliderPreview from "@/components/docs/previews/SliderPreview";
+
 export const metadata = { title: "Slider" };
 
 # Slider
 
 A range slider with ARIA value attributes and optional value display.
+
+## Preview
+
+<ComponentPreview code={`import { Slider } from "anexui";
+
+<Slider defaultValue={40} aria-label="Volume" />
+<Slider min={0} max={100} step={5} defaultValue={60} showValue aria-label="Brightness" />`}>
+  <SliderPreview />
+</ComponentPreview>
 
 ## Usage
 

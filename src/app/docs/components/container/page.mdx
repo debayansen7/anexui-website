@@ -1,8 +1,20 @@
+import ContainerPreview from "@/components/docs/previews/ContainerPreview";
+
 export const metadata = { title: "Container" };
 
 # Container
 
 A max-width wrapper that centres content with consistent responsive horizontal padding.
+
+## Preview
+
+<ComponentPreview code={`import { Container } from "anexui";
+
+<Container maxWidth="sm">Small — 640px</Container>
+<Container maxWidth="md">Medium — 768px</Container>
+<Container maxWidth="lg">Large — 1024px</Container>`}>
+  <ContainerPreview />
+</ComponentPreview>
 
 ## Usage
 

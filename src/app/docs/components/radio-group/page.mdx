@@ -1,8 +1,22 @@
+import RadioGroupPreview from "@/components/docs/previews/RadioGroupPreview";
+
 export const metadata = { title: "Radio Group" };
 
 # Radio Group
 
 A group of radio buttons with roving tabindex keyboard navigation, rendered in a `<fieldset>`.
+
+## Preview
+
+<ComponentPreview code={`import { RadioGroup, Radio } from "anexui";
+
+<RadioGroup legend="Delivery method" name="delivery" direction="vertical">
+  <Radio label="Email" value="email" defaultChecked />
+  <Radio label="SMS" value="sms" />
+  <Radio label="Push notification" value="push" />
+</RadioGroup>`}>
+  <RadioGroupPreview />
+</ComponentPreview>
 
 ## Usage
 

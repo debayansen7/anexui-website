@@ -1,8 +1,32 @@
+import AlertPreview from "@/components/docs/previews/AlertPreview";
+
 export const metadata = { title: "Alert" };
 
 # Alert
 
 An inline status message with icon, optional title, and dismiss button. Uses `role="alert"` or `role="status"` based on severity.
+
+## Preview
+
+<ComponentPreview code={`import { Alert } from "anexui";
+
+<Alert variant="success" title="Changes saved">
+  Your profile has been updated.
+</Alert>
+
+<Alert variant="error" title="Upload failed">
+  Max file size is 5 MB.
+</Alert>
+
+<Alert variant="warning">
+  Your session expires in 5 minutes.
+</Alert>
+
+<Alert variant="info" title="New feature">
+  Dark mode is now available.
+</Alert>`}>
+  <AlertPreview />
+</ComponentPreview>
 
 ## Usage
 
@@ -32,7 +56,7 @@ import { Alert } from "anexui";
 ## Dismissible
 
 ```tsx
-<Alert variant="warning" onDismiss={() => console.log("dismissed")}>
+<Alert variant="warning" onDismiss={() => setVisible(false)}>
   This action cannot be undone.
 </Alert>
 ```
@@ -43,7 +67,7 @@ import { Alert } from "anexui";
 |---|---|---|---|
 | `variant` | `"success" \| "error" \| "warning" \| "info"` | `"info"` | Colour and icon |
 | `title` | `string` | — | Bold heading above the message |
-| `onDismiss` | `() => void` | — | Shows a close button, called on click |
+| `onDismiss` | `() => void` | — | Shows a close button; called on click |
 
 All standard HTML `<div>` attributes are accepted.
 

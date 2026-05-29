@@ -1,8 +1,29 @@
+import BannerPreview from "@/components/docs/previews/BannerPreview";
+
 export const metadata = { title: "Banner" };
 
 # Banner
 
 A full-width site-level announcement bar with colour variants, an optional action, and a dismiss button.
+
+## Preview
+
+<ComponentPreview code={`import { Banner } from "anexui";
+
+<Banner
+  variant="promo"
+  title="Special offer"
+  description="Get 3 months free — upgrade before Friday."
+  action={{ label: "Claim offer", onClick: () => {} }}
+  onDismiss={() => {}}
+/>
+<Banner
+  variant="warning"
+  title="Scheduled maintenance"
+  description="Services offline Sunday 2–4 AM UTC."
+/>`}>
+  <BannerPreview />
+</ComponentPreview>
 
 ## Usage
 
