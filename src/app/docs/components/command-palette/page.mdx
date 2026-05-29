@@ -1,0 +1,108 @@
+import CommandPalettePreview from "@/components/docs/previews/CommandPalettePreview";
+
+export const metadata = { title: "CommandPalette" };
+
+# CommandPalette
+
+Keyboard-driven search overlay with grouped results, arrow-key navigation, and live filtering.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { CommandPalette, Button } from "anexui";
+
+const ITEMS = [
+  { id: "button",  label: "Button",  group: "Components" },
+  { id: "input",   label: "Input",   group: "Components" },
+  { id: "install", label: "Installation", group: "Docs" },
+];
+
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setOpen(true)}>
+        Search… ⌘K
+      </Button>
+      <CommandPalette
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        placeholder="Search components and docs…"
+        items={ITEMS}
+      />
+    </>
+  );
+}`}>
+  <CommandPalettePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { CommandPalette, Button } from "anexui";
+
+const items = [
+  { id: "button",  label: "Button",  group: "Components" },
+  { id: "modal",   label: "Modal",   group: "Components" },
+  { id: "install", label: "Installation", group: "Docs" },
+];
+
+function Example() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open palette</Button>
+      <CommandPalette
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        items={items}
+        placeholder="Search…"
+      />
+    </>
+  );
+}
+```
+
+## Items with groups
+
+Add a `group` string to each item to render a labelled group heading.
+
+```tsx
+const items = [
+  { id: "button", label: "Button", group: "Components" },
+  { id: "modal",  label: "Modal",  group: "Components" },
+  { id: "guide",  label: "Installation", group: "Docs" },
+];
+```
+
+## Loading state
+
+```tsx
+<CommandPalette
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  items={[]}
+  loading
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isOpen` | `boolean` | — | **Required.** Controls palette visibility |
+| `onClose` | `() => void` | — | **Required.** Called when backdrop or Escape is pressed |
+| `placeholder` | `string` | `"Search…"` | Input placeholder text |
+| `items` | `CommandItem[]` | `[]` | List of searchable items |
+| `loading` | `boolean` | `false` | Shows a loading indicator instead of results |
+| `onSearch` | `(query: string) => void` | — | Called on every keystroke for external filtering |
+| `emptyText` | `string` | `"No results."` | Text shown when the filtered list is empty |
+
+## CommandItem type
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | **Required.** Unique item identifier |
+| `label` | `string` | **Required.** Displayed text |
+| `group` | `string` | Optional group label for section headings |

@@ -1,0 +1,95 @@
+import ComboboxPreview from "@/components/docs/previews/ComboboxPreview";
+
+export const metadata = { title: "Combobox" };
+
+# Combobox
+
+Searchable dropdown with keyboard navigation and an optional clear button.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Combobox } from "anexui";
+
+const frameworks = [
+  { value: "react",   label: "React" },
+  { value: "vue",     label: "Vue" },
+  { value: "angular", label: "Angular" },
+  { value: "svelte",  label: "Svelte" },
+];
+
+function Example() {
+  const [value, setValue] = useState("");
+  return (
+    <Combobox
+      options={frameworks}
+      value={value}
+      onChange={setValue}
+      placeholder="Select framework…"
+    />
+  );
+}`}>
+  <ComboboxPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Combobox } from "anexui";
+
+const options = [
+  { value: "react",  label: "React" },
+  { value: "vue",    label: "Vue" },
+  { value: "svelte", label: "Svelte" },
+];
+
+function Example() {
+  const [value, setValue] = useState("");
+  return (
+    <Combobox
+      options={options}
+      value={value}
+      onChange={setValue}
+      placeholder="Choose a framework…"
+    />
+  );
+}
+```
+
+## Clearable
+
+Add `clearable` to show an × button when a value is selected.
+
+```tsx
+<Combobox options={options} value={value} onChange={setValue} clearable />
+```
+
+## Disabled
+
+```tsx
+<Combobox options={options} value="" onChange={() => {}} disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `options` | `ComboboxOption[]` | — | **Required.** List of selectable options |
+| `value` | `string` | — | Controlled selected value |
+| `onChange` | `(value: string) => void` | — | Called when the user selects or clears an option |
+| `placeholder` | `string` | — | Placeholder text when nothing is selected |
+| `disabled` | `boolean` | `false` | Disables the combobox |
+| `clearable` | `boolean` | `false` | Shows a clear button when a value is selected |
+| `emptyText` | `string` | `"No options."` | Text shown when the search yields no matches |
+| `className` | `string` | — | Extra class names on the root element |
+| `id` | `string` | — | HTML `id` — links to a `<Label>` |
+| `name` | `string` | — | HTML form field name |
+
+## ComboboxOption type
+
+| Field | Type | Description |
+|---|---|---|
+| `value` | `string` | **Required.** Unique option value |
+| `label` | `string` | **Required.** Displayed option text |
+| `disabled` | `boolean` | Prevents this option from being selected |

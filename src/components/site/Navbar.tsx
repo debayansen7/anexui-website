@@ -1,14 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import Search from "@/components/docs/Search";
+import LogoIcon from "./LogoIcon";
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/8 bg-[#080808]/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-semibold text-white text-lg">
-          <Image src="/logo.png" alt="Anex UI" width={36} height={36} className="rounded-lg" priority />
+          <LogoIcon size={36} />
           Anex UI
         </Link>
 

@@ -1,0 +1,79 @@
+import DatePickerPreview from "@/components/docs/previews/DatePickerPreview";
+
+export const metadata = { title: "DatePicker" };
+
+# DatePicker
+
+Calendar dropdown date selector with min/max constraints and full form integration.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { DatePicker } from "anexui";
+
+function Example() {
+  const [date, setDate] = useState<Date | null>(null);
+  return (
+    <DatePicker
+      value={date}
+      onChange={setDate}
+      placeholder="Pick a date"
+    />
+  );
+}`}>
+  <DatePickerPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { DatePicker } from "anexui";
+
+function Example() {
+  const [date, setDate] = useState<Date | null>(null);
+  return (
+    <DatePicker
+      value={date}
+      onChange={setDate}
+      placeholder="Select date"
+    />
+  );
+}
+```
+
+## With min / max
+
+Pass `Date` objects to restrict the selectable range.
+
+```tsx
+const today = new Date();
+const nextMonth = new Date();
+nextMonth.setDate(nextMonth.getDate() + 30);
+
+<DatePicker
+  min={today}
+  max={nextMonth}
+  placeholder="Next 30 days only"
+/>
+```
+
+## Disabled
+
+```tsx
+<DatePicker placeholder="Unavailable" disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `Date \| null` | — | Controlled selected date |
+| `onChange` | `(date: Date) => void` | — | Called when the user picks a date |
+| `placeholder` | `string` | `"MM/DD/YYYY"` | Placeholder text when no date is selected |
+| `disabled` | `boolean` | `false` | Disables the picker |
+| `min` | `Date` | — | Earliest selectable date |
+| `max` | `Date` | — | Latest selectable date |
+| `className` | `string` | — | Extra class names on the root element |
+| `id` | `string` | — | HTML `id` — links to a `<Label>` |
+| `name` | `string` | — | Hidden input name for form submission |

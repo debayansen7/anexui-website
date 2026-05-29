@@ -1,0 +1,76 @@
+import RatingPreview from "@/components/docs/previews/RatingPreview";
+
+export const metadata = { title: "Rating" };
+
+# Rating
+
+Star rating with full, half, and empty states — interactive or read-only.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { Rating } from "anexui";
+
+function Example() {
+  const [value, setValue] = useState(0);
+  return <Rating value={value} onChange={setValue} />;
+}`}>
+  <RatingPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { Rating } from "anexui";
+
+function Example() {
+  const [stars, setStars] = useState(0);
+  return (
+    <Rating value={stars} onChange={setStars} />
+  );
+}
+```
+
+## Half stars
+
+Enable `allowHalf` to let users select 0.5-step values.
+
+```tsx
+<Rating value={3.5} onChange={setStars} allowHalf />
+```
+
+## Read-only
+
+```tsx
+<Rating value={4.5} readOnly allowHalf />
+```
+
+## Sizes
+
+```tsx
+<Rating value={4} readOnly size="sm" />
+<Rating value={4} readOnly size="md" />
+<Rating value={4} readOnly size="lg" />
+```
+
+## Disabled
+
+```tsx
+<Rating defaultValue={3} disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | — | Controlled rating value |
+| `defaultValue` | `number` | `0` | Initial value (uncontrolled) |
+| `onChange` | `(value: number) => void` | — | Called when the user changes the rating |
+| `max` | `number` | `5` | Total number of stars |
+| `allowHalf` | `boolean` | `false` | Allow half-star selections |
+| `readOnly` | `boolean` | `false` | Disables interaction; keeps hover effects off |
+| `disabled` | `boolean` | `false` | Disables interaction and applies muted styles |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Star size |
+| `className` | `string` | — | Extra class names on the root element |
+| `label` | `string` | — | `aria-label` for screen readers |

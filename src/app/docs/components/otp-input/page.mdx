@@ -1,0 +1,85 @@
+import OTPInputPreview from "@/components/docs/previews/OTPInputPreview";
+
+export const metadata = { title: "OTPInput" };
+
+# OTPInput
+
+N-box OTP / PIN input with auto-advance, paste support, and an `onComplete` callback.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { OTPInput } from "anexui";
+
+function Example() {
+  const [value, setValue] = useState("");
+  return (
+    <OTPInput
+      length={6}
+      value={value}
+      onChange={setValue}
+      onComplete={(code) => console.log("Complete:", code)}
+    />
+  );
+}`}>
+  <OTPInputPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { OTPInput } from "anexui";
+
+function VerifyForm() {
+  const [otp, setOtp] = useState("");
+  return (
+    <OTPInput
+      length={6}
+      value={otp}
+      onChange={setOtp}
+    />
+  );
+}
+```
+
+## onComplete callback
+
+`onComplete` fires once the user fills all boxes. Use it to auto-submit the form.
+
+```tsx
+<OTPInput
+  length={6}
+  value={otp}
+  onChange={setOtp}
+  onComplete={(code) => verify(code)}
+/>
+```
+
+## Text mode
+
+Set `type="text"` to accept letters as well as digits (e.g. for alphanumeric invite codes).
+
+```tsx
+<OTPInput length={4} type="text" />
+```
+
+## Disabled
+
+```tsx
+<OTPInput length={6} value="123456" disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `length` | `number` | `6` | Number of input boxes |
+| `value` | `string` | — | Controlled value string |
+| `onChange` | `(value: string) => void` | — | Called on every character change |
+| `onComplete` | `(value: string) => void` | — | Called when all boxes are filled |
+| `disabled` | `boolean` | `false` | Disables all input boxes |
+| `type` | `"numeric" \| "text"` | `"numeric"` | Restricts input to digits or allows letters |
+| `className` | `string` | — | Extra class names on the root element |
+| `id` | `string` | — | HTML `id` on the first input |
+| `name` | `string` | — | HTML form field name |

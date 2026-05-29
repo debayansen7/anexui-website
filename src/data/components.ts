@@ -180,6 +180,16 @@ export const components: ComponentEntry[] = [
     requires: [],
     files: ["Label.tsx", "Label.module.css", "Label.Type.ts"],
   },
+  {
+    id: "segmented-control",
+    label: "SegmentedControl",
+    description: "Compact button-group toggle for switching between mutually exclusive views.",
+    category: "Basic",
+    folderName: "SegmentedControl",
+    categorySlug: "basic",
+    requires: [],
+    files: ["SegmentedControl.tsx", "SegmentedControl.module.css", "SegmentedControl.Type.ts"],
+  },
 
   // Layout ────────────────────────────────────────────────────────────────────
   {
@@ -264,6 +274,36 @@ export const components: ComponentEntry[] = [
     requires: [],
     files: ["Stepper.tsx", "Stepper.module.css", "Stepper.Type.ts"],
   },
+  {
+    id: "navbar",
+    label: "Navbar",
+    description: "Compound sticky header with brand, nav links, and actions slots.",
+    category: "Navigation",
+    folderName: "Navbar",
+    categorySlug: "navigation",
+    requires: [],
+    files: ["Navbar.tsx", "Navbar.module.css", "Navbar.Type.ts"],
+  },
+  {
+    id: "side-nav",
+    label: "SideNav",
+    description: "Grouped sidebar navigation with active state and keyboard support.",
+    category: "Navigation",
+    folderName: "SideNav",
+    categorySlug: "navigation",
+    requires: [],
+    files: ["SideNav.tsx", "SideNav.module.css", "SideNav.Type.ts"],
+  },
+  {
+    id: "table-of-contents",
+    label: "TableOfContents",
+    description: "Presentational TOC with active heading highlighting.",
+    category: "Navigation",
+    folderName: "TableOfContents",
+    categorySlug: "navigation",
+    requires: [],
+    files: ["TableOfContents.tsx", "TableOfContents.module.css", "TableOfContents.Type.ts"],
+  },
 
   // Feedback ──────────────────────────────────────────────────────────────────
   {
@@ -326,6 +366,26 @@ export const components: ComponentEntry[] = [
     requires: [],
     files: ["Toast.tsx", "Toast.module.css", "Toast.Type.ts"],
   },
+  {
+    id: "callout",
+    label: "Callout",
+    description: "Left-border accent callout block in info, warning, success, danger, and neutral variants.",
+    category: "Feedback",
+    folderName: "Callout",
+    categorySlug: "feedback",
+    requires: [],
+    files: ["Callout.tsx", "Callout.module.css", "Callout.Type.ts"],
+  },
+  {
+    id: "empty-state",
+    label: "EmptyState",
+    description: "Centered placeholder with icon, title, description, and action slot.",
+    category: "Feedback",
+    folderName: "EmptyState",
+    categorySlug: "feedback",
+    requires: [],
+    files: ["EmptyState.tsx", "EmptyState.module.css", "EmptyState.Type.ts"],
+  },
 
   // Overlay ───────────────────────────────────────────────────────────────────
   {
@@ -367,6 +427,16 @@ export const components: ComponentEntry[] = [
     categorySlug: "overlay",
     requires: [],
     files: ["Popover.tsx", "Popover.module.css", "Popover.Type.ts"],
+  },
+  {
+    id: "command-palette",
+    label: "CommandPalette",
+    description: "Keyboard-driven search overlay with grouped results and arrow-key navigation.",
+    category: "Overlay",
+    folderName: "CommandPalette",
+    categorySlug: "overlay",
+    requires: [],
+    files: ["CommandPalette.tsx", "CommandPalette.module.css", "CommandPalette.Type.ts"],
   },
 
   // Data Display ──────────────────────────────────────────────────────────────
@@ -450,6 +520,26 @@ export const components: ComponentEntry[] = [
     requires: [],
     files: ["Timeline.tsx", "Timeline.module.css", "Timeline.Type.ts"],
   },
+  {
+    id: "code-block",
+    label: "CodeBlock",
+    description: "Syntax-highlighted code block with language label and copy button.",
+    category: "Data Display",
+    folderName: "CodeBlock",
+    categorySlug: "data-display",
+    requires: [],
+    files: ["CodeBlock.tsx", "CodeBlock.module.css", "CodeBlock.Type.ts"],
+  },
+  {
+    id: "rating",
+    label: "Rating",
+    description: "Star rating with full, half, and empty states — interactive or read-only.",
+    category: "Data Display",
+    folderName: "Rating",
+    categorySlug: "data-display",
+    requires: [],
+    files: ["Rating.tsx", "Rating.module.css", "Rating.Type.ts"],
+  },
 
   // Form ──────────────────────────────────────────────────────────────────────
   {
@@ -481,6 +571,46 @@ export const components: ComponentEntry[] = [
     categorySlug: "form",
     requires: [],
     files: ["NumberInput.tsx", "NumberInput.module.css", "NumberInput.Type.ts"],
+  },
+  {
+    id: "date-picker",
+    label: "DatePicker",
+    description: "Calendar dropdown date selector with min/max constraints and form integration.",
+    category: "Form",
+    folderName: "DatePicker",
+    categorySlug: "form",
+    requires: [],
+    files: ["DatePicker.tsx", "DatePicker.module.css", "DatePicker.Type.ts"],
+  },
+  {
+    id: "combobox",
+    label: "Combobox",
+    description: "Searchable dropdown with keyboard navigation and optional clear button.",
+    category: "Form",
+    folderName: "Combobox",
+    categorySlug: "form",
+    requires: [],
+    files: ["Combobox.tsx", "Combobox.module.css", "Combobox.Type.ts"],
+  },
+  {
+    id: "file-upload",
+    label: "FileUpload",
+    description: "Drag-and-drop file zone with size validation and file list management.",
+    category: "Form",
+    folderName: "FileUpload",
+    categorySlug: "form",
+    requires: [],
+    files: ["FileUpload.tsx", "FileUpload.module.css", "FileUpload.Type.ts"],
+  },
+  {
+    id: "otp-input",
+    label: "OTPInput",
+    description: "N-box OTP/PIN input with auto-advance, paste, and onComplete callback.",
+    category: "Form",
+    folderName: "OTPInput",
+    categorySlug: "form",
+    requires: [],
+    files: ["OTPInput.tsx", "OTPInput.module.css", "OTPInput.Type.ts"],
   },
 ];
 

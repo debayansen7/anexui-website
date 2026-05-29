@@ -1,0 +1,72 @@
+import FileUploadPreview from "@/components/docs/previews/FileUploadPreview";
+
+export const metadata = { title: "FileUpload" };
+
+# FileUpload
+
+Drag-and-drop file zone with size validation, accepted type filtering, and a selected-file list.
+
+## Preview
+
+<ComponentPreview code={`import { FileUpload } from "anexui";
+
+// Single file (default)
+<FileUpload />
+
+// Multiple images
+<FileUpload multiple accept="image/*" />
+
+// Disabled
+<FileUpload disabled />`}>
+  <FileUploadPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { FileUpload } from "anexui";
+
+<FileUpload
+  onChange={(files) => console.log(files)}
+/>
+```
+
+## Multiple files
+
+```tsx
+<FileUpload
+  multiple
+  onChange={(files) => setFiles(files)}
+/>
+```
+
+## Image-only
+
+```tsx
+<FileUpload accept="image/*" />
+```
+
+## With max size
+
+```tsx
+<FileUpload maxSize={5 * 1024 * 1024} /> {/* 5 MB */}
+```
+
+## Disabled
+
+```tsx
+<FileUpload disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `multiple` | `boolean` | `false` | Allow selecting multiple files |
+| `accept` | `string` | — | MIME type filter (e.g. `"image/*"`, `".pdf"`) |
+| `maxSize` | `number` | — | Maximum file size in bytes; oversized files are rejected |
+| `onChange` | `(files: File[]) => void` | — | Called whenever the file selection changes |
+| `disabled` | `boolean` | `false` | Disables drag-and-drop and the file picker |
+| `className` | `string` | — | Extra class names on the root element |
+| `id` | `string` | — | HTML `id` attribute |
+| `name` | `string` | — | HTML form field name |

@@ -1,0 +1,90 @@
+import TableOfContentsPreview from "@/components/docs/previews/TableOfContentsPreview";
+
+export const metadata = { title: "TableOfContents" };
+
+# TableOfContents
+
+Presentational table-of-contents with active heading highlighting. Pair it with an `IntersectionObserver` or scroll listener to drive `activeId`.
+
+## Preview
+
+<ComponentPreview code={`import { TableOfContents } from "anexui";
+
+const items = [
+  { id: "preview", label: "Preview",     level: 2 },
+  { id: "usage",   label: "Usage",       level: 2 },
+  { id: "props",   label: "Props",       level: 2 },
+  { id: "toc",     label: "TocItem type", level: 3 },
+];
+
+<TableOfContents items={items} activeId="usage" label="On this page" />`}>
+  <TableOfContentsPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { TableOfContents } from "anexui";
+
+const items = [
+  { id: "overview", label: "Overview", level: 2 },
+  { id: "install",  label: "Install",  level: 2 },
+  { id: "usage",    label: "Usage",    level: 3 },
+];
+
+<TableOfContents items={items} activeId="install" />
+```
+
+## Controlled active item
+
+Drive `activeId` with an `IntersectionObserver` to highlight the section currently in view.
+
+```tsx
+import { useState, useEffect } from "react";
+import { TableOfContents } from "anexui";
+
+function DocsLayout({ items, children }) {
+  const [activeId, setActiveId] = useState("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) setActiveId(visible.target.id);
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+    items.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [items]);
+
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "1fr 200px" }}>
+      <article>{children}</article>
+      <aside>
+        <TableOfContents items={items} activeId={activeId} />
+      </aside>
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `TocItem[]` | — | **Required.** Ordered list of heading items |
+| `activeId` | `string` | — | ID of the currently visible heading |
+| `label` | `string` | `"On this page"` | Section heading above the list |
+| `className` | `string` | — | Extra class names on the root element |
+
+## TocItem type
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | **Required.** Matches the heading element's `id` |
+| `label` | `string` | **Required.** Displayed link text |
+| `level` | `2 \| 3` | Heading depth — `3` items are indented |

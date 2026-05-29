@@ -1,0 +1,111 @@
+import SegmentedControlPreview from "@/components/docs/previews/SegmentedControlPreview";
+
+export const metadata = { title: "SegmentedControl" };
+
+# SegmentedControl
+
+Compact button-group toggle for switching between mutually exclusive views or modes.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { SegmentedControl } from "anexui";
+
+const options = [
+  { value: "list", label: "List" },
+  { value: "grid", label: "Grid" },
+  { value: "map",  label: "Map" },
+];
+
+function Example() {
+  const [view, setView] = useState("list");
+  return (
+    <SegmentedControl options={options} value={view} onChange={setView} />
+  );
+}`}>
+  <SegmentedControlPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { useState } from "react";
+import { SegmentedControl } from "anexui";
+
+const options = [
+  { value: "day",   label: "Day" },
+  { value: "week",  label: "Week" },
+  { value: "month", label: "Month" },
+];
+
+function Example() {
+  const [period, setPeriod] = useState("week");
+  return (
+    <SegmentedControl options={options} value={period} onChange={setPeriod} />
+  );
+}
+```
+
+## With icons
+
+Supply a `icon` field (or a React node) on each option.
+
+```tsx
+const options = [
+  { value: "list", label: "List", icon: <ListIcon /> },
+  { value: "grid", label: "Grid", icon: <GridIcon /> },
+];
+
+<SegmentedControl options={options} value={view} onChange={setView} />
+```
+
+## Sizes
+
+```tsx
+<SegmentedControl options={options} value={v} onChange={setV} size="sm" />
+<SegmentedControl options={options} value={v} onChange={setV} size="md" />
+```
+
+## Full width
+
+```tsx
+<SegmentedControl options={options} value={v} onChange={setV} fullWidth />
+```
+
+## Disabled
+
+Disable the entire control or individual options.
+
+```tsx
+{/* Entire control */}
+<SegmentedControl options={options} value={v} onChange={setV} disabled />
+
+{/* Single option */}
+const options = [
+  { value: "a", label: "A" },
+  { value: "b", label: "B", disabled: true },
+];
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `options` | `SegmentedOption[]` | — | **Required.** List of segment options |
+| `value` | `string` | — | Controlled selected value |
+| `defaultValue` | `string` | — | Initially selected value (uncontrolled) |
+| `onChange` | `(value: string) => void` | — | Called when the selected segment changes |
+| `size` | `"sm" \| "md"` | `"md"` | Control size |
+| `fullWidth` | `boolean` | `false` | Stretches the control to fill its container |
+| `disabled` | `boolean` | `false` | Disables all segments |
+| `className` | `string` | — | Extra class names on the root element |
+| `name` | `string` | — | HTML form field name |
+
+## SegmentedOption type
+
+| Field | Type | Description |
+|---|---|---|
+| `value` | `string` | **Required.** Unique option value |
+| `label` | `string` | **Required.** Displayed text |
+| `icon` | `ReactNode` | Optional icon rendered before the label |
+| `disabled` | `boolean` | Disables this individual segment |

@@ -1,0 +1,89 @@
+import SideNavPreview from "@/components/docs/previews/SideNavPreview";
+
+export const metadata = { title: "SideNav" };
+
+# SideNav
+
+Grouped sidebar navigation with active state, hover styles, and keyboard support.
+
+## Preview
+
+<ComponentPreview code={`import { useState } from "react";
+import { SideNav, SideNavGroup, SideNavItem } from "anexui";
+
+function Example() {
+  const [active, setActive] = useState("installation");
+  return (
+    <SideNav>
+      <SideNavGroup label="Getting Started">
+        <SideNavItem active={active === "installation"} onClick={() => setActive("installation")}>
+          Installation
+        </SideNavItem>
+        <SideNavItem active={active === "theming"} onClick={() => setActive("theming")}>
+          Theming
+        </SideNavItem>
+      </SideNavGroup>
+      <SideNavGroup label="Components">
+        <SideNavItem active={active === "button"} onClick={() => setActive("button")}>
+          Button
+        </SideNavItem>
+        <SideNavItem active={active === "input"} onClick={() => setActive("input")}>
+          Input
+        </SideNavItem>
+      </SideNavGroup>
+    </SideNav>
+  );
+}`}>
+  <SideNavPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { SideNav, SideNavGroup, SideNavItem } from "anexui";
+
+<SideNav>
+  <SideNavGroup label="Components">
+    <SideNavItem href="/docs/components/button">Button</SideNavItem>
+    <SideNavItem href="/docs/components/input">Input</SideNavItem>
+  </SideNavGroup>
+</SideNav>
+```
+
+## SideNavItem as button (no href)
+
+When `href` is omitted, `SideNavItem` renders as a `<button>` for programmatic navigation.
+
+```tsx
+const [active, setActive] = useState("button");
+
+<SideNavItem active={active === "button"} onClick={() => setActive("button")}>
+  Button
+</SideNavItem>
+```
+
+## SideNav Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `className` | `string` | — | Extra class names on the root `<nav>` |
+| `children` | `ReactNode` | — | `SideNavGroup` or `SideNavItem` elements |
+
+## SideNavGroup Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Section heading text |
+| `className` | `string` | — | Extra class names |
+| `children` | `ReactNode` | — | `SideNavItem` elements |
+
+## SideNavItem Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `href` | `string` | — | When provided renders an `<a>` tag; otherwise a `<button>` |
+| `active` | `boolean` | `false` | Applies the active highlight style |
+| `disabled` | `boolean` | `false` | Disables interaction |
+| `onClick` | `() => void` | — | Click handler (used when `href` is omitted) |
+| `className` | `string` | — | Extra class names |
+| `children` | `ReactNode` | — | Item label |

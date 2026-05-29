@@ -1,12 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
+import LogoIcon from "./LogoIcon";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/8 mt-auto py-10">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
         <div className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Anex UI" width={24} height={24} className="rounded-md" />
+          <LogoIcon size={24} />
           <span>Anex UI — MIT License</span>
         </div>
         <div className="flex items-center gap-6">

@@ -1,0 +1,75 @@
+import EmptyStatePreview from "@/components/docs/previews/EmptyStatePreview";
+
+export const metadata = { title: "EmptyState" };
+
+# EmptyState
+
+Centered placeholder with an optional icon, title, description, and action slot.
+
+## Preview
+
+<ComponentPreview code={`import { EmptyState, Button } from "anexui";
+
+const InboxIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+    <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z" />
+  </svg>
+);
+
+<EmptyState
+  icon={<InboxIcon />}
+  title="No messages yet"
+  description="When you receive a message it will appear here."
+  action={<Button variant="primary" size="sm">Compose message</Button>}
+/>
+
+<EmptyState title="Nothing to show" />`}>
+  <EmptyStatePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { EmptyState } from "anexui";
+
+<EmptyState
+  title="No results found"
+  description="Try adjusting your search or filters."
+/>
+```
+
+## With action
+
+```tsx
+import { EmptyState, Button } from "anexui";
+
+<EmptyState
+  title="No projects yet"
+  description="Create your first project to get started."
+  action={
+    <Button variant="primary" size="sm">
+      New project
+    </Button>
+  }
+/>
+```
+
+## Without icon
+
+```tsx
+<EmptyState
+  title="Nothing here"
+  description="This section is empty."
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | — | Decorative icon rendered above the title |
+| `title` | `string` | — | **Required.** Short heading |
+| `description` | `string` | — | Longer explanatory text below the title |
+| `action` | `ReactNode` | — | CTA button or link rendered below the description |
+| `className` | `string` | — | Extra class names on the root element |

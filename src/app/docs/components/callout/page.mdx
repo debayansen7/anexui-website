@@ -1,0 +1,85 @@
+import CalloutPreview from "@/components/docs/previews/CalloutPreview";
+
+export const metadata = { title: "Callout" };
+
+# Callout
+
+Left-border accent callout block in five variants: info, warning, success, danger, and neutral.
+
+## Preview
+
+<ComponentPreview code={`import { Callout } from "anexui";
+
+<Callout variant="info" title="Heads up">
+  This feature is in beta. Expect breaking changes in future releases.
+</Callout>
+
+<Callout variant="warning" title="Deprecated">
+  The color prop is deprecated — use variant instead.
+</Callout>
+
+<Callout variant="success" title="Deployed">
+  Your changes have been published to production successfully.
+</Callout>
+
+<Callout variant="danger" title="Destructive action">
+  Deleting this record cannot be undone. Proceed with caution.
+</Callout>
+
+<Callout variant="neutral" title="Note">
+  Components follow the WAI-ARIA Authoring Practices Guide.
+</Callout>`}>
+  <CalloutPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { Callout } from "anexui";
+
+<Callout variant="info" title="Did you know?">
+  You can pass any React node as children, including inline code and links.
+</Callout>
+```
+
+## Without title
+
+The `title` prop is optional — omit it for a body-only callout.
+
+```tsx
+<Callout variant="warning">
+  Remember to back up your data before proceeding.
+</Callout>
+```
+
+## Custom icon
+
+Override the default variant icon with any React node.
+
+```tsx
+import { Callout } from "anexui";
+
+<Callout variant="info" icon={<RocketIcon />} title="Coming soon">
+  This feature is under active development.
+</Callout>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `"info" \| "warning" \| "success" \| "danger" \| "neutral"` | `"info"` | Color and icon preset |
+| `title` | `string` | — | Optional bold heading above the body |
+| `icon` | `ReactNode` | — | Override the default variant icon |
+| `className` | `string` | — | Extra class names on the root element |
+| `children` | `ReactNode` | — | Callout body content |
+
+## Variant values
+
+| Value | Use case |
+|---|---|
+| `info` | Neutral informational notes |
+| `warning` | Deprecation notices or caveats |
+| `success` | Confirmation of a completed action |
+| `danger` | Destructive or irreversible action warnings |
+| `neutral` | General-purpose annotation |

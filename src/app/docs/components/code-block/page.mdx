@@ -1,0 +1,62 @@
+import CodeBlockPreview from "@/components/docs/previews/CodeBlockPreview";
+
+export const metadata = { title: "CodeBlock" };
+
+# CodeBlock
+
+Syntax-highlighted code block with a language label and a one-click copy button.
+
+## Preview
+
+<ComponentPreview code={`import { CodeBlock } from "anexui";
+
+// TSX snippet
+<CodeBlock language="tsx">{\`import { Button } from "anexui";
+<Button variant="primary">Click me</Button>\`}</CodeBlock>
+
+// Shell command
+<CodeBlock language="bash">npm install anexui</CodeBlock>
+
+// No language label
+<CodeBlock>{"{ \\"key\\": \\"value\\" }"}</CodeBlock>`}>
+  <CodeBlockPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { CodeBlock } from "anexui";
+
+<CodeBlock language="tsx">
+  {`import { Button } from "anexui";
+
+export default function App() {
+  return <Button variant="primary">Click me</Button>;
+}`}
+</CodeBlock>
+```
+
+## Language label
+
+Pass any language string via the `language` prop. It is displayed as a small badge in the top-right corner alongside the copy button.
+
+```tsx
+<CodeBlock language="bash">npm install anexui</CodeBlock>
+<CodeBlock language="json">{"{ \"key\": \"value\" }"}</CodeBlock>
+```
+
+## No language
+
+Omit `language` to render the block without a label.
+
+```tsx
+<CodeBlock>{rawText}</CodeBlock>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `string` | — | **Required.** The code string to display |
+| `language` | `string` | — | Language label shown in the header (e.g. `"tsx"`, `"bash"`) |
+| `className` | `string` | — | Extra class names on the root element |

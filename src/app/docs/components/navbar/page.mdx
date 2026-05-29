@@ -1,0 +1,106 @@
+import NavbarPreview from "@/components/docs/previews/NavbarPreview";
+
+export const metadata = { title: "Navbar" };
+
+# Navbar
+
+Compound sticky header with three slots: brand, nav links, and actions.
+
+## Preview
+
+<ComponentPreview code={`import { Navbar, NavbarBrand, NavbarNav, NavbarActions, Button } from "anexui";
+
+<Navbar>
+  <NavbarBrand>Anex UI</NavbarBrand>
+  <NavbarNav>
+    <a href="/docs">Docs</a>
+    <a href="/components">Components</a>
+    <a href="/changelog">Changelog</a>
+  </NavbarNav>
+  <NavbarActions>
+    <Button variant="primary" size="sm">Get started</Button>
+  </NavbarActions>
+</Navbar>`}>
+  <NavbarPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { Navbar, NavbarBrand, NavbarNav, NavbarActions, Button } from "anexui";
+
+<Navbar>
+  <NavbarBrand>My App</NavbarBrand>
+  <NavbarNav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+  </NavbarNav>
+  <NavbarActions>
+    <Button variant="outline" size="sm">Sign in</Button>
+    <Button variant="primary" size="sm">Sign up</Button>
+  </NavbarActions>
+</Navbar>
+```
+
+## Sub-components
+
+### NavbarBrand
+
+Renders the logo or site name on the left side of the bar.
+
+```tsx
+<NavbarBrand>
+  <img src="/logo.svg" alt="Logo" width={28} height={28} />
+  My App
+</NavbarBrand>
+```
+
+### NavbarNav
+
+Horizontal list of navigation links rendered in the centre.
+
+```tsx
+<NavbarNav>
+  <a href="/docs">Docs</a>
+  <a href="/blog">Blog</a>
+</NavbarNav>
+```
+
+### NavbarActions
+
+Right-aligned slot for buttons, icons, or any action controls.
+
+```tsx
+<NavbarActions>
+  <Button variant="primary" size="sm">Sign up</Button>
+</NavbarActions>
+```
+
+## Navbar Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `sticky` | `boolean` | `true` | Pins the bar to the top of the viewport with `position: sticky` |
+| `className` | `string` | — | Extra class names on the root `<header>` |
+| `children` | `ReactNode` | — | Accepts `NavbarBrand`, `NavbarNav`, and `NavbarActions` |
+
+## NavbarBrand Props
+
+| Prop | Type | Description |
+|---|---|---|
+| `className` | `string` | Extra class names |
+| `children` | `ReactNode` | Logo image, text, or both |
+
+## NavbarNav Props
+
+| Prop | Type | Description |
+|---|---|---|
+| `className` | `string` | Extra class names |
+| `children` | `ReactNode` | Anchor elements or custom link components |
+
+## NavbarActions Props
+
+| Prop | Type | Description |
+|---|---|---|
+| `className` | `string` | Extra class names |
+| `children` | `ReactNode` | Buttons, icons, or any action controls |

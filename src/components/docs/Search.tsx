@@ -16,6 +16,11 @@ interface PagefindAPI {
   }>;
 }
 
+// Pagefind indexes .next/server/app, so URLs come back as /path/page.html — strip to the clean Next.js route
+function cleanUrl(url: string): string {
+  return url.replace(/\/page\.html$/, "").replace(/\/index\.html$/, "").replace(/\.html$/, "") || "/";
+}
+
 async function loadPagefind(): Promise<PagefindAPI | null> {
   try {
     // pagefind.js is generated into /public/pagefind/ at build time — doesn't exist during TS check
@@ -80,12 +85,12 @@ export default function Search() {
     if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, results.length - 1)); }
     if (e.key === "ArrowUp")   { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); }
     if (e.key === "Enter" && results[activeIdx]) {
-      router.push(results[activeIdx].url);
+      router.push(cleanUrl(results[activeIdx].url));
       closeModal();
     }
   };
 
-  const navigate = (url: string) => { router.push(url); closeModal(); };
+  const navigate = (url: string) => { router.push(cleanUrl(url)); closeModal(); };
 
   return (
     <>
