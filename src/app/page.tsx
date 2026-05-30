@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
-import { features, hero, quickStart, cta, site } from "@/data/site";
+import { features, hero, quickStart, cta, site, componentGrid } from "@/data/site";
 import { landingGrid } from "@/data/components";
 
 export default function HomePage() {
@@ -61,8 +61,8 @@ export default function HomePage() {
         {/* Component grid */}
         <section className="max-w-7xl mx-auto px-6 py-20 border-t border-white/8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-3">50+ components. Every use case covered.</h2>
-            <p className="text-white/50">From a basic button to a full carousel with ARIA patterns — it&apos;s all here.</p>
+            <h2 className="text-3xl font-bold text-white mb-3">{componentGrid.heading}</h2>
+            <p className="text-white/50">{componentGrid.subheading}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {landingGrid.map((group) => (

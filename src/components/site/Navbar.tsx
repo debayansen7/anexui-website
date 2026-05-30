@@ -2,6 +2,7 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import Search from "@/components/docs/Search";
 import LogoIcon from "./LogoIcon";
+import { site, navLinks } from "@/data/site";
 
 export default function Navbar() {
   return (
@@ -9,24 +10,29 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-semibold text-white text-lg">
           <LogoIcon size={36} />
-          Anex UI
+          {site.name}
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-white/60">
-          <Link href="/docs/getting-started" className="hover:text-white transition-colors">Docs</Link>
-          <Link href="/docs/components" className="hover:text-white transition-colors">Components</Link>
-          <Link href="/docs/theming" className="hover:text-white transition-colors">Theming</Link>
-          <Link href="/builder" className="hover:text-white transition-colors flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
-            Builder
-          </Link>
+          {navLinks.map((link) =>
+            link.highlight ? (
+              <Link key={link.href} href={link.href} className="hover:text-white transition-colors flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+                {link.label}
+              </Link>
+            ) : (
+              <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
+                {link.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
           <Search />
           <ThemeToggle />
           <a
-            href="https://github.com/debayansen7/anex-ui-library"
+            href={site.github}
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/60 hover:text-white transition-colors p-1.5"
@@ -37,12 +43,12 @@ export default function Navbar() {
             </svg>
           </a>
           <a
-            href="https://www.npmjs.com/package/anexui"
+            href={site.npm}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-violet-600 hover:bg-violet-500 text-white text-sm px-4 py-1.5 rounded-lg font-medium transition-colors"
           >
-            npm install anexui
+            npm install {site.packageName}
           </a>
         </div>
       </div>
